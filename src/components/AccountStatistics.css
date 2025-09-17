@@ -1,0 +1,405 @@
+/* Account Statistics Modal */
+.account-statistics-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 1000;
+  padding-top: 60px;
+}
+
+.account-statistics-modal {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 0;
+    width: 90vw;
+    max-width: 500px;
+    max-height: 100vh;
+    position: relative;
+    box-shadow: 0px 52px 59.1px 0px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.account-statistics-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.account-statistics-modal::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.account-statistics-modal::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.account-statistics-modal::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Header */
+.account-statistics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 15px;
+    font-size: 0.75rem !important;
+    background: #E3E3E3;
+    border: none;
+}
+.account-statistics-title {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  color: #5d5d5d;
+  margin: 0;
+}
+
+.account-statistics-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #5d5d5d;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.account-statistics-close:hover {
+  color: #1d6ce9;
+}
+
+/* Tabs */
+.account-statistics-tabs {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 15px;
+  border: none;
+}
+
+.account-statistics-tab {
+  background: none;
+  border: none;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #5d5d5d;
+  cursor: pointer;
+  padding: 10px;
+  position: relative;
+  transition: color 0.2s;
+  flex: 1;
+  text-align: center;
+}
+
+.account-statistics-tab.active {
+  color: #272525;
+}
+
+.account-statistics-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 30%;
+    right: 0;
+    height: 3px;
+    background-color: #1d6ce9;
+    width: 70px;
+}
+/* Key Performance Indicators */
+.account-statistics-kpis {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border: none;
+}
+
+.kpi-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+}
+
+.kpi-label {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #5d5d5d;
+  white-space: nowrap;
+}
+
+.kpi-value {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #5d5d5d;
+  white-space: nowrap;
+}
+
+.kpi-value.profit {
+  color: #1d6ce9;
+}
+
+/* Statistics Chart */
+.account-statistics-chart {
+  background-color: #efefef;
+  height: 120px;
+  margin: 10px 15px;
+  padding: 8px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.chart-label {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 10px;
+  color: #949494;
+}
+
+/* Statistics Grid */
+.account-statistics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 0 15px 10px;
+  overflow: hidden;
+}
+
+.account-statistics-grid::-webkit-scrollbar {
+  height: 4px;
+}
+
+.account-statistics-grid::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 2px;
+}
+
+.account-statistics-grid::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 2px;
+}
+
+.account-statistics-grid::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.stat-box {
+  background-color: #efefef;
+  padding: 8px;
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.stat-title {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 10px;
+  color: #5d5d5d;
+  margin-bottom: 9px;
+}
+
+.stat-number {
+  color: #949494;
+}
+
+.stat-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 10px;
+  color: #5d5d5d;
+}
+
+.stat-bar-container {
+  display: flex;
+  height: 4px;
+  background-color: transparent;
+}
+
+.stat-bar {
+  height: 100%;
+}
+
+.stat-bar.profit {
+  background-color: #1d6ce9;
+}
+
+.stat-bar.loss {
+  background-color: #e14145;
+}
+
+.stat-bar-legend {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 10px;
+  margin-top: 6px;
+}
+
+.legend-item {
+  color: #5d5d5d;
+}
+
+.legend-item.profit {
+  color: #1d6ce9;
+}
+
+.legend-item.loss {
+  color: #e14145;
+}
+
+/* Circular Charts */
+.account-statistics-circular {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 0 15px 10px;
+  min-height: 150px;
+}
+
+.account-statistics-circular::-webkit-scrollbar {
+  height: 4px;
+}
+
+.account-statistics-circular::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 2px;
+}
+
+.account-statistics-circular::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 2px;
+}
+
+.account-statistics-circular::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.circular-chart-box {
+  background-color: #efefef;
+  min-height: 140px;
+  width: 100%;
+  padding: 12px 8px;
+  position: relative;
+  border: none;
+  border-radius: 0;
+  flex-shrink: 0;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+.circular-chart-title {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 10px;
+  color: #5d5d5d;
+  margin-bottom: 20px;
+}
+
+.circular-chart-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  flex: 1;
+  margin-top: auto;
+}
+
+.circular-chart {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #efefef;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circular-chart-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.circular-chart-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 10px;
+  text-align: right;
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.circular-percentage {
+  color: #5d5d5d;
+}
+
+.circular-currency {
+  color: #e14145;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .account-statistics-modal {
+    width: 95vw;
+    max-width: 450px;
+    max-height: 90vh;
+  }
+  
+  .account-statistics-kpis {
+    gap: 15px;
+    padding: 10px 15px;
+    flex-direction: column;
+  }
+  
+  .account-statistics-grid {
+    grid-template-columns: 1fr;
+    padding: 0 15px 10px;
+  }
+  
+  .stat-box {
+    width: 100%;
+  }
+  
+  .account-statistics-circular {
+    grid-template-columns: 1fr;
+    padding: 0 15px 10px;
+  }
+  
+  .circular-chart-box {
+    width: 100%;
+  }
+}

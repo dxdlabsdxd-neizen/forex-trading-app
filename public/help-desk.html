@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Desk Contact</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .container {
+            width:400px;
+            background-color: #fff;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background-color: #EFEFEF;
+        }
+        .header h3 {
+            font-size: 0.75rem;
+            margin: 0;
+            color: #555;
+        }
+        .header .close-btn {
+            font-size: 1.5rem;
+            color: #999;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .content {
+            padding: 2rem;
+        }
+        .tab-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .divider-line {
+            flex-grow: 1;
+            height: 2px;
+            background-color: #EFEFEF;
+        }
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #999;
+            position: relative;
+        }
+        .tab-button.active {
+            color: #272525;
+            font-family: Arial;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #1D6CE9;
+            z-index: 2;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            color: #5D5D5D;
+            font-family: Arial;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 10px;
+            color: #949494;
+            font-family: Arial;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            margin-bottom: 2rem;
+        }
+        .contact-info-box {
+            background-color: #EFEFEF;
+            padding: 1.5rem;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .contact-icon {
+            margin-right: 1rem;
+        }
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-label {
+            font-size: 0.75rem;
+            color: #555;
+            margin-bottom: 0.25rem;
+        }
+        .contact-email {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+        }
+        .contact-status {
+            font-size: 0.625rem;
+            color: #1D6CE9;
+        }
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .form-label {
+            color: #5D5D5D;
+            font-family: Arial;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            margin-bottom: 0.5rem;
+        }
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0;
+            background-color: #EFEFEF;
+            box-sizing: border-box;
+            font-size: 1rem;
+            color: #333;
+        }
+        .form-textarea {
+            height: 80px;
+            resize: none;
+        }
+        .full-width {
+            width: 100%;
+        }
+        .send-button {
+            width: 100%;
+            padding: 1rem;
+            background-color: #1D6CE9;
+            color: #fff;
+            border: none;
+            border-radius: 0;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h3>Help Desk</h3>
+            <span class="close-btn">&times;</span>
+        </div>
+        <div class="content">
+            <div class="tab-container">
+                <button class="tab-button active">Contact Now</button>
+            </div>
+
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">We're here to help with any questions you might have</p>
+
+            <div class="contact-info-box">
+                <div class="contact-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M14.25 6C13.625 6 13.0938 5.78125 12.6562 5.34375C12.2188 4.90625 12 4.375 12 3.75C12 3.125 12.2188 2.59375 12.6562 2.15625C13.0938 1.71875 13.625 1.5 14.25 1.5C14.875 1.5 15.4062 1.71875 15.8438 2.15625C16.2812 2.59375 16.5 3.125 16.5 3.75C16.5 4.375 16.2812 4.90625 15.8438 5.34375C15.4062 5.78125 14.875 6 14.25 6ZM3 15C2.5875 15 2.23438 14.8531 1.94063 14.5594C1.64688 14.2656 1.5 13.9125 1.5 13.5V4.5C1.5 4.0875 1.64688 3.73438 1.94063 3.44063C2.23438 3.14688 2.5875 3 3 3H10.575C10.525 3.25 10.5 3.5 10.5 3.75C10.5 4 10.525 4.25 10.575 4.5C10.6625 4.9 10.8063 5.27188 11.0063 5.61563C11.2063 5.95938 11.45 6.2625 11.7375 6.525L9 8.25L3 4.5V6L9 9.75L12.9563 7.275C13.1688 7.35 13.3813 7.40625 13.5938 7.44375C13.8062 7.48125 14.025 7.5 14.25 7.5C14.65 7.5 15.0438 7.4375 15.4313 7.3125C15.8188 7.1875 16.175 7 16.5 6.75V13.5C16.5 13.9125 16.3531 14.2656 16.0594 14.5594C15.7656 14.8531 15.4125 15 15 15H3Z" fill="#1D6CE9"/>
+                    </svg>
+                </div>
+                <div class="contact-details">
+                    <div class="contact-label">Email Support</div>
+                    <div class="contact-email">support@forex.com</div>
+                    <div class="contact-status">Available 24/5</div>
+                </div>
+            </div>
+
+            <div class="form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input type="text" id="fullName" class="form-input" value="Emma">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-input" value="Brown">
+                    </div>
+                </div>
+
+                <div class="form-group full-width" style="margin-bottom: 2rem;">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" id="subject" class="form-input">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" class="form-textarea">English</textarea>
+                </div>
+            </div>
+            <button class="send-button">Send Message</button>
+        </div>
+    </div>
+</body>
+</html>

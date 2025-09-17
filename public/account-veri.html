@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            width: 100%;
+            max-width: 450px;
+            background-color: white;
+            border-radius: 0; /* Changed to 0 */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #EFEFEF; /* Changed from #ddd */
+            padding: 10px 25px; /* Reduced padding for more compact height */
+            /* border-bottom: none; Removed */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h3 {
+            margin: 0;
+            font-size: 0.75rem; /* Changed to 0.75rem */
+            color: #555;
+        }
+        .header .close-btn {
+            font-size: 24px;
+            color: #aaa;
+            cursor: pointer;
+        }
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            /* border-bottom: none; Removed */
+            padding-top: 10px;
+        }
+        .nav-tabs .tab {
+            padding: 15px 20px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #888;
+            cursor: pointer;
+            position: relative;
+        }
+        .nav-tabs .tab.active {
+            color: #007bff;
+        }
+        .nav-tabs .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #007bff;
+            border-radius: 0; /* Changed to 0 */
+        }
+        .form-content {
+            padding: 25px;
+        }
+        .profile-icon-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .profile-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%; /* Kept as 50% for circular icon as per "icon same" */
+            background-color: #e0f0ff;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .profile-icon svg {
+            width: 40px;
+            height: 40px;
+            color: #007bff;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #555;
+        }
+        .form-group.inline-fields {
+            display: flex;
+            gap: 20px;
+        }
+        .form-group.inline-fields > div {
+            flex: 1;
+        }
+        .form-control {
+    width: 100%;
+    padding: 12px;
+    border: 0px solid #ddd;
+    border-radius: 0;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #EFEFEF;
+}
+        .form-control::placeholder {
+            color: #bbb;
+        }
+        .btn-upload {
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 0; /* Changed to 0 */
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-upload:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <div class="header">
+        <h3>Account Information</h3>
+        <span class="close-btn">&times;</span>
+    </div>
+    <div class="nav-tabs">
+        <div class="tab active">Personal Information</div>
+    </div>
+    <div class="form-content">
+        <div class="profile-icon-container">
+            <div class="profile-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </div>
+        </div>
+        <div class="form-group inline-fields">
+            <div>
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" class="form-control" placeholder="Emma Brown">
+            </div>
+            <div>
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" class="form-control" placeholder="Emma Brown">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail Address</label>
+            <input type="email" id="email" class="form-control" placeholder="edgetrade@gmail.com">
+        </div>
+        <div class="form-group">
+            <label for="idNumber">ID Number</label>
+            <input type="text" id="idNumber" class="form-control" placeholder="0218704976265">
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="text" id="dob" class="form-control" placeholder="dd/mm/yyyy">
+        </div>
+        <button class="btn-upload">Upload Documents</button>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE ahtml>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdrawal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .modal-container {
+            background-color: #fff;
+            box-shadow: none;
+            max-width: 450px; /* Adjusted for a more compact, centered look */
+            width: 90%;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 15px; /* Reduced padding for minimal height */
+            background-color: #E3E3E3;
+            border-bottom: none;
+        }
+
+        .header-title {
+            font-size: 0.75rem; /* Smaller font size */
+            font-weight: bold;
+            color: #333;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #999;
+            cursor: pointer;
+        }
+
+        .content-wrapper {
+            padding: 15px;
+        }
+
+        .balance-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .available-balance-text {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .balance-amount {
+            font-size: 40px;
+            font-weight: bold;
+            color: #007bff;
+            margin: 0;
+        }
+
+        .risk-text {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: none;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: #E3E3E3;
+        }
+
+        .input-unit {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 14px;
+        }
+
+        .min-amount-text {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .quick-selection {
+            margin-top: 20px;
+        }
+
+        .quick-selection-label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .selection-buttons {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            gap: 5px;
+        }
+
+        .selection-buttons button {
+            background-color: #f0f0f0;
+            color: #555;
+            border: none;
+            padding: 8px 20px; /* Adjusted padding to ensure buttons are bigger and fit */
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .selection-buttons button.active {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+        }
+
+        .summary-section {
+            background-color: #E3E3E3;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .summary-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .summary-value {
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .summary-row.total {
+            border-top: 1px dashed #ccc;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .total-label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .total-value {
+            font-size: 16px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .withdraw-button, .approve-button {
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 16px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .withdraw-button:hover, .approve-button:hover {
+            background-color: #0056b3;
+        }
+
+        .page-content {
+            display: none;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+
+        /* New styles for the second page tabs */
+        .tab-section {
+            display: flex;
+            justify-content: space-around;
+            border-bottom: none;
+            margin-bottom: 20px;
+        }
+
+        .tab-section button {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #999;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .tab-section button.active {
+            color: #007bff;
+        }
+
+        .tab-section button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #007bff;
+        }
+
+        .form-sub-section {
+            margin-bottom: 20px;
+        }
+
+        .sub-input-group input, .sub-input-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: none;
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #333;
+            background-color: #E3E3E3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="modal-container">
+        <!-- Page 1 Content -->
+        <div id="page-one" class="page-content active">
+            <div class="header">
+                <span class="header-title">Withdrawal</span>
+                <button class="close-btn">&times;</button>
+            </div>
+
+            <div class="content-wrapper">
+                <div class="balance-section">
+                    <p class="available-balance-text">Available Balance</p>
+                    <h1 class="balance-amount">$1,250.00</h1>
+                    <p class="risk-text">After Risk Analyst Approval your funds will be sent</p>
+                </div>
+
+                <div class="form-section">
+                    <label for="deposit-amount" class="form-label">Amount to be deposited (USD)</label>
+                    <div class="input-group">
+                        <input type="text" id="deposit-amount" value="100">
+                        <span class="input-unit">USD</span>
+                    </div>
+                    <p class="min-amount-text">Minimum Withdrawal Amount: $50 (USD)</p>
+                </div>
+
+                <div class="quick-selection">
+                    <span class="quick-selection-label">Quick Quality Selection</span>
+                    <div class="selection-buttons">
+                        <button data-amount="100" class="active">$ 100</button>
+                        <button data-amount="250">$ 250</button>
+                        <button data-amount="500">$ 500</button>
+                        <button data-amount="1000">$ 1000</button>
+                        <button data-amount="2500">$ 2500</button>
+                    </div>
+                </div>
+
+                <div class="summary-section">
+                    <div class="summary-row">
+                        <span class="summary-label">Amount to be deposited:</span>
+                        <span class="summary-value" id="summary-amount">$100.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Transaction Fee:</span>
+                        <span class="summary-value">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Commission:</span>
+                        <span class="summary-value">$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span class="total-label">Total:</span>
+                        <span class="total-value" id="summary-total">$100.00</span>
+                    </div>
+                </div>
+
+                <button class="withdraw-button">WITHDRAW</button>
+            </div>
+        </div>
+
+        <!-- Page 2 Content -->
+        <div id="page-two" class="page-content">
+            <div class="header">
+                <span class="header-title">Withdrawal</span>
+                <button class="close-btn">&times;</button>
+            </div>
+
+            <div class="content-wrapper">
+                <div class="tab-section">
+                    <button id="bank-transfer-tab" class="active">Bank Transfer</button>
+                    <button id="crypto-tab">Crypto</button>
+                </div>
+
+                <!-- Bank Transfer Form -->
+                <div id="bank-transfer-content" class="form-sub-section active">
+                    <label class="form-label">Bank Name</label>
+                    <div class="sub-input-group">
+                        <input type="text" placeholder="Dutch Bank LTD">
+                    </div>
+                    <label class="form-label" style="margin-top: 15px;">Account Holder Name</label>
+                    <div class="sub-input-group">
+                        <input type="text" placeholder="Dutch Bank LTD">
+                    </div>
+                    <label class="form-label" style="margin-top: 15px;">IBAN Address</label>
+                    <div class="sub-input-group">
+                        <input type="text" placeholder="9012 3456 78">
+                    </div>
+                </div>
+
+                <!-- Crypto Form -->
+                <div id="crypto-content" class="form-sub-section" style="display: none;">
+                    <label class="form-label">Crypto</label>
+                    <div class="sub-input-group">
+                        <select>
+                            <option>USDT</option>
+                        </select>
+                    </div>
+                    <label class="form-label" style="margin-top: 15px;">Network Address</label>
+                    <div class="sub-input-group">
+                        <select>
+                            <option>TRC 20</option>
+                        </select>
+                    </div>
+                    <label class="form-label" style="margin-top: 15px;">Withdrawal Address</label>
+                    <div class="sub-input-group">
+                        <input type="text" placeholder="DSA548add4857dsa6s54">
+                    </div>
+                </div>
+
+                <div class="summary-section">
+                    <p class="form-label">Withdrawal Amount: <span id="withdrawal-amount-summary">$100</span></p>
+                    <div class="summary-row">
+                        <span class="summary-label">Amount to be Withdraw:</span>
+                        <span class="summary-value" id="amount-to-withdraw">$100.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Transaction Fee:</span>
+                        <span class="summary-value">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Commission:</span>
+                        <span class="summary-value">$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span class="total-label">Total:</span>
+                        <span class="total-value" id="total-amount">$100.00</span>
+                    </div>
+                </div>
+
+                <button class="approve-button">APPROVE</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const pageOne = document.getElementById('page-one');
+            const pageTwo = document.getElementById('page-two');
+            const withdrawButton = document.querySelector('.withdraw-button');
+            const closeButtons = document.querySelectorAll('.close-btn');
+            const bankTransferTab = document.getElementById('bank-transfer-tab');
+            const cryptoTab = document.getElementById('crypto-tab');
+            const bankTransferContent = document.getElementById('bank-transfer-content');
+            const cryptoContent = document.getElementById('crypto-content');
+            const depositAmountInput = document.getElementById('deposit-amount');
+            const summaryAmount = document.getElementById('summary-amount');
+            const summaryTotal = document.getElementById('summary-total');
+            const withdrawalAmountSummary = document.getElementById('withdrawal-amount-summary');
+            const amountToWithdraw = document.getElementById('amount-to-withdraw');
+            const totalAmount = document.getElementById('total-amount');
+            const selectionButtons = document.querySelectorAll('.selection-buttons button');
+
+            function updateSummary(amount) {
+                summaryAmount.textContent = `$${parseFloat(amount).toFixed(2)}`;
+                summaryTotal.textContent = `$${parseFloat(amount).toFixed(2)}`;
+                withdrawalAmountSummary.textContent = `$${parseFloat(amount).toFixed(2)}`;
+                amountToWithdraw.textContent = `$${parseFloat(amount).toFixed(2)}`;
+                totalAmount.textContent = `$${parseFloat(amount).toFixed(2)}`;
+            }
+
+            // Handle quick selection buttons
+            selectionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    selectionButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const amount = button.dataset.amount;
+                    depositAmountInput.value = amount;
+                    updateSummary(amount);
+                });
+            });
+
+            // Handle input field changes
+            depositAmountInput.addEventListener('input', (e) => {
+                const amount = e.target.value || 0;
+                updateSummary(amount);
+            });
+
+            // Handle switching between pages
+            withdrawButton.addEventListener('click', () => {
+                pageOne.classList.remove('active');
+                pageTwo.classList.add('active');
+            });
+
+            // Handle closing the modal (going back to page 1)
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    pageTwo.classList.remove('active');
+                    pageOne.classList.add('active');
+                });
+            });
+
+            // Handle tab switching
+            bankTransferTab.addEventListener('click', () => {
+                bankTransferTab.classList.add('active');
+                cryptoTab.classList.remove('active');
+                bankTransferContent.style.display = 'block';
+                cryptoContent.style.display = 'none';
+                
+                // Update button text for bank transfer
+                document.querySelector('.approve-button').textContent = "APPROVE";
+            });
+
+            cryptoTab.addEventListener('click', () => {
+                cryptoTab.classList.add('active');
+                bankTransferTab.classList.remove('active');
+                cryptoContent.style.display = 'block';
+                bankTransferContent.style.display = 'none';
+
+                // Update button text for crypto
+                document.querySelector('.approve-button').textContent = "WITHDRAW";
+            });
+        });
+    </script>
+
+</body>
+</html>

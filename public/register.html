@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdgeTrade Register</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+
+    <style>
+        :root {
+    --primary-blue: #2A79F9;
+    --primary-blue-light: #5294FF;
+    --accent-blue: #93C6FE;
+    --card-background: rgba(255, 255, 255, 0.2);
+    --text-color: #333;
+    --text-light: #fff;
+    --link-color: #2A79F9;
+    --border-color: rgba(255, 255, 255, 0.3);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    background-image: url('./login.png');
+    background-size: cover;
+    background-position:center 50px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.login-container {
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-card {
+    background-color: var(--card-background);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    padding: 2rem 2.5rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    width: 400px;
+    max-width: 900px;
+    box-shadow: inset 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    margin-bottom: 0.5rem;
+}
+
+.logo svg {
+    display: block;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.subtitle {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.subtitle a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem; /* Space between the two columns */
+    margin-bottom: -0.5rem;
+}
+
+.form-group {
+    text-align: left;
+    flex: 1; /* Makes each form group take up equal space */
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #dadada;
+    color: var(--text-color);
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 0.8rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    background-color: #ffffff;
+}
+
+.form-group input::placeholder {
+    color: #aaa;
+}
+
+.sign-in-btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 0px;
+    background-color: var(--primary-blue);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 2rem; /* Added margin for better spacing */
+}
+
+.sign-in-btn:hover {
+    background-color: var(--primary-blue-light);
+}
+    </style>
+</head>
+<body>
+
+ 
+
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo">
+                <svg width="46" height="40" viewBox="0 0 46 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_56_636)">
+                    <path d="M0 33L4.60606 25H12.2448C17.2569 25 21.4947 28.7103 22.1571 33.6784L23 40H13L11.5585 36.6365C10.613 34.4304 8.44379 33 6.04362 33H0Z" fill="#1D6CE9"></path>
+                    <path d="M46 33L41.3939 25H33.7552C28.7431 25 24.5053 28.7103 23.8429 33.6784L23 40H33L34.4415 36.6365C35.387 34.4304 37.5562 33 39.9564 33H46Z" fill="#1D6CE9"></path>
+                    <path d="M4.60596 25L18.9998 0H22.9999L22.6031 9.52405C22.2607 17.7406 15.7454 24.3596 7.53527 24.8316L4.60596 25Z" fill="#1D6CE9"></path>
+                    <path d="M41.3939 25L27.0001 0H23L23.3968 9.52405C23.7392 17.7406 30.2545 24.3596 38.4646 24.8316L41.3939 25Z" fill="#1D6CE9"></path>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_56_636">
+                    <rect width="46" height="40" fill="white"></rect>
+                    </clipPath>
+                    </defs>
+                    </svg>
+            </div>
+            <h1>EdgeTrade Log in</h1>
+            <p class="subtitle">Do you have an account? <a href="#">Register</a></p>
+            
+            <form action="#" method="post">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" placeholder="Emma" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" placeholder="Brown" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="idNumber">ID Number</label>
+                        <input type="text" id="idNumber" placeholder="0218704976285" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="text" id="dob" placeholder="dd/mm/yyyy" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" placeholder="Enter Your Phone Number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter Your Email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter Your Password" required>
+                </div>
+
+                <button type="submit" class="sign-in-btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
