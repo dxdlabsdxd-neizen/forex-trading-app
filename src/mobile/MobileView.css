@@ -466,6 +466,108 @@
   }
 }
 
+/* Mobile Modals */
+.mobile-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.mobile-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 350px;
+  max-height: 80vh;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: slideInUp 0.3s ease-out;
+}
+
+.mobile-modal-header {
+  background: #1d6ce9;
+  color: #ffffff;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.mobile-modal-header button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.mobile-modal-header button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-modal-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.mobile-modal-content p {
+  margin: 0 0 16px 0;
+  color: #1e1e1e;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.mobile-modal-btn {
+  background: #1d6ce9;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.mobile-modal-btn:hover {
+  background: #0d5bc7;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* Fullscreen mobile view */
 @media (max-width: 393px) {
   .mobile-view-container {
@@ -486,5 +588,13 @@
   
   .bottom-navigation {
     border-radius: 0;
+  }
+  
+  .mobile-modal-overlay {
+    padding: 10px;
+  }
+  
+  .mobile-modal {
+    width: 95%;
   }
 }

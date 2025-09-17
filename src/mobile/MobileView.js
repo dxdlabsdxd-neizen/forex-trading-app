@@ -4,14 +4,52 @@ import './MobileView.css'
 const MobileView = () => {
   const [activeMenuButton, setActiveMenuButton] = useState('Menu')
   const [activeBottomNav, setActiveBottomNav] = useState('Market')
+  const [showDepositModal, setShowDepositModal] = useState(false)
+  const [showWithdrawalModal, setShowWithdrawalModal] = useState(false)
+  const [showAccountModal, setShowAccountModal] = useState(false)
+  const [showTradeModal, setShowTradeModal] = useState(false)
+  const [showHelpModal, setShowHelpModal] = useState(false)
 
   const handleMenuClick = (menuType) => {
     setActiveMenuButton(menuType)
     console.log('Menu clicked:', menuType)
+    
+    // Open modals based on menu type
+    switch (menuType) {
+      case 'Deposit':
+        setShowDepositModal(true)
+        break
+      case 'Trade':
+        setShowTradeModal(true)
+        break
+      default:
+        break
+    }
   }
 
   const handleMenuItemClick = (item) => {
     console.log('Menu item clicked:', item)
+    
+    // Open modals based on menu item
+    switch (item) {
+      case 'account-info':
+        setShowAccountModal(true)
+        break
+      case 'withdrawal':
+        setShowWithdrawalModal(true)
+        break
+      case 'deposit':
+        setShowDepositModal(true)
+        break
+      case 'trade-transaction':
+        setShowTradeModal(true)
+        break
+      case 'help-desk':
+        setShowHelpModal(true)
+        break
+      default:
+        break
+    }
   }
 
   const handleBottomNavClick = (navItem) => {
@@ -173,6 +211,84 @@ const MobileView = () => {
           <span className="bottom-nav-label">History</span>
         </div>
       </div>
+
+      {/* Modals */}
+      {showDepositModal && (
+        <div className="mobile-modal-overlay" onClick={() => setShowDepositModal(false)}>
+          <div className="mobile-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="mobile-modal-header">
+              <h3>Deposit Funds</h3>
+              <button onClick={() => setShowDepositModal(false)}>×</button>
+            </div>
+            <div className="mobile-modal-content">
+              <p>Deposit functionality coming soon!</p>
+              <button className="mobile-modal-btn" onClick={() => setShowDepositModal(false)}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showWithdrawalModal && (
+        <div className="mobile-modal-overlay" onClick={() => setShowWithdrawalModal(false)}>
+          <div className="mobile-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="mobile-modal-header">
+              <h3>Withdraw Funds</h3>
+              <button onClick={() => setShowWithdrawalModal(false)}>×</button>
+            </div>
+            <div className="mobile-modal-content">
+              <p>Withdrawal functionality coming soon!</p>
+              <button className="mobile-modal-btn" onClick={() => setShowWithdrawalModal(false)}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showAccountModal && (
+        <div className="mobile-modal-overlay" onClick={() => setShowAccountModal(false)}>
+          <div className="mobile-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="mobile-modal-header">
+              <h3>Account Information</h3>
+              <button onClick={() => setShowAccountModal(false)}>×</button>
+            </div>
+            <div className="mobile-modal-content">
+              <p><strong>Account:</strong> EMMA BROWN 90993789</p>
+              <p><strong>Currency:</strong> USD</p>
+              <p><strong>Balance:</strong> $10,500.00</p>
+              <button className="mobile-modal-btn" onClick={() => setShowAccountModal(false)}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showTradeModal && (
+        <div className="mobile-modal-overlay" onClick={() => setShowTradeModal(false)}>
+          <div className="mobile-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="mobile-modal-header">
+              <h3>Trade & Transaction</h3>
+              <button onClick={() => setShowTradeModal(false)}>×</button>
+            </div>
+            <div className="mobile-modal-content">
+              <p>Trade functionality coming soon!</p>
+              <button className="mobile-modal-btn" onClick={() => setShowTradeModal(false)}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showHelpModal && (
+        <div className="mobile-modal-overlay" onClick={() => setShowHelpModal(false)}>
+          <div className="mobile-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="mobile-modal-header">
+              <h3>Help Desk</h3>
+              <button onClick={() => setShowHelpModal(false)}>×</button>
+            </div>
+            <div className="mobile-modal-content">
+              <p>Contact support for assistance!</p>
+              <button className="mobile-modal-btn" onClick={() => setShowHelpModal(false)}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
