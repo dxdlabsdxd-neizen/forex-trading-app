@@ -602,7 +602,7 @@ html, body {
 .app-content {
   grid-area: content;
   background-color: #f8f9fa;
-  overflow: hidden;
+  overflow-y: auto;
   padding: 0;
   margin: 0;
 }

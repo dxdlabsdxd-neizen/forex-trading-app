@@ -5,7 +5,6 @@ import { Helmet } from 'react-helmet'
 import './home.css'
 import AccountStatistics from '../components/AccountStatistics'
 import SetAlert from '../components/SetAlert'
-import MobileView from '../mobile/MobileView'
 
 const Home = (props) => {
   const [showDropdown, setShowDropdown] = useState(false)
@@ -61,24 +60,7 @@ const Home = (props) => {
   })
   const [showAccountStatistics, setShowAccountStatistics] = useState(false)
   const [showSetAlert, setShowSetAlert] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
 
-  // Mobile detection - Only for actual mobile devices
-  useEffect(() => {
-    const checkMobile = () => {
-      // Check for actual mobile device, not just screen size
-      const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-      const isSmallScreen = window.innerWidth <= 768
-      
-      // Only show mobile version if it's an actual mobile device AND small screen
-      const mobile = isMobileDevice && isSmallScreen
-      setIsMobile(mobile)
-    }
-
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
 
   // Forex pairs data with prices
   const forexPairs = [
@@ -910,13 +892,6 @@ const Home = (props) => {
   }
 
 
-  // Show mobile view on mobile devices
-  if (isMobile) {
-    return <MobileView />
-  }
-  
-
-  // Show desktop view on desktop
   return (
     <div className="app-layout">
       <Helmet>

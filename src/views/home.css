@@ -1,20 +1,3 @@
-/* Global Reset for Full Screen - No Scroll */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
-  overflow: hidden;
-}
-
-#app {
-  height: 100vh;
-  overflow: hidden;
-}
-
 /* Sidebar Styles */
 .sidebar-logo {
   margin-bottom: 22px;
@@ -22,42 +5,25 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: none;
-  filter: none;
 }
  
 .logo-icon {
   width: 29px;
   height: 25px;
-  filter: none !important;
-  background: none !important;
-  -webkit-filter: none !important;
-  opacity: 1 !important;
-  color: inherit !important;
 }
 
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
   flex: 1;
 }
 
 .sidebar-bottom {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0;
   margin-top: auto;
-  padding-top: 12px;
-}
-
-/* Settings and Help icons specific styling */
-.sidebar-bottom .nav-icon {
-  margin-bottom: 8px;
-}
-
-.sidebar-bottom .nav-icon:last-child {
-  margin-bottom: 0;
 }
 
 .nav-icon {
