@@ -1,0 +1,437 @@
+/* Market Page Styles - Mobile Only */
+.market-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: white;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Section */
+.market-header {
+  background: linear-gradient(135deg, #1d6ce9 0%, #103d83 100%);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding: 2vh 3vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2vh;
+  position: relative;
+  box-shadow: 0px 4px 36.1px 9px inset rgba(0, 0, 0, 0.25);
+  min-height: 28vh;
+  min-height: 28dvh;
+}
+
+/* Equity Section */
+.equity-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7vh;
+  padding: 1vh 0;
+}
+
+.equity-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: clamp(18px, 5vw, 20px);
+  color: #c8c6c6;
+  text-align: center;
+  line-height: 1;
+}
+
+.equity-amount {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(30px, 8vw, 36px);
+  color: white;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Main Menu Buttons */
+.main-menu-buttons {
+  background-color: #103d83;
+  border-radius: 24px;
+  padding: 2.4vh 6vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 9vh;
+}
+
+.menu-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6vh;
+  cursor: pointer;
+  width: 52px;
+  flex: 0 0 auto;
+}
+
+.menu-icon-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  transition: all 0.2s ease;
+}
+
+.menu-button:hover .menu-icon-box {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.menu-button-text {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(12px, 3.5vw, 14px);
+  color: white;
+  text-align: center;
+  text-transform: capitalize;
+  line-height: 1;
+}
+
+/* Category Buttons */
+.category-buttons {
+  background-color: #dde9fc;
+  border-radius: 12px;
+  padding: 1.6vh 4vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1vh;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 7vh;
+}
+
+.category-button {
+  background-color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 1vh 2.5vw;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: clamp(12px, 3.5vw, 14px);
+  color: #1e1e1e;
+  text-align: center;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 93px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.category-button.active {
+  background-color: #1d6ce9;
+  color: white;
+}
+
+.category-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Search Bar */
+.search-bar {
+  background-color: #4f5358;
+  border-radius: 30px;
+  padding: 1vh 2.5vw;
+  display: flex;
+  align-items: center;
+  min-height: 4vh;
+}
+
+.search-content {
+  display: flex;
+  align-items: center;
+  gap: 1vh;
+  flex: 1;
+}
+
+.search-placeholder {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(12px, 3.5vw, 14px);
+  color: white;
+  text-transform: capitalize;
+}
+
+/* Market Data Container */
+.market-data-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 2vh 3vw 0 3vw;
+  min-height: 40vh;
+  min-height: 40dvh;
+}
+
+.market-data-header {
+  background-color: #1756ba;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 1.2vh 6vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  min-height: 5vh;
+}
+
+.header-column {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 600;
+  font-size: clamp(10px, 3vw, 11px);
+  color: white;
+  text-align: center;
+  text-transform: capitalize;
+  line-height: 1;
+}
+
+.header-column:nth-child(1) {
+  width: 52px;
+}
+
+.header-column:nth-child(2) {
+  width: 54px;
+}
+
+.header-column:nth-child(3) {
+  width: 79px;
+}
+
+/* Market Data List */
+.market-data-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  overflow: hidden;
+}
+
+.market-data-row {
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vh 3.5vw;
+  min-height: 3.4vh;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.market-data-row:last-child {
+  border-bottom: none;
+}
+
+.symbol-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5vh;
+  flex: 1;
+}
+
+.symbol-logo {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background-color: #1d6ce9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(10px, 3vw, 12px);
+  color: white;
+  text-align: center;
+}
+
+.symbol-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(10px, 3vw, 12px);
+  color: #1e1e1e;
+  text-transform: uppercase;
+  line-height: 1;
+  width: 56px;
+}
+
+.price-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  padding: 1vh 0;
+}
+
+.price {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(10px, 3vw, 11px);
+  color: #707070;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.price.market-closed {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #1d6ce9;
+  font-size: clamp(10px, 3vw, 11px);
+}
+
+.change-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 104px;
+  padding: 1vh 0;
+}
+
+.change {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(10px, 3vw, 11px);
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.change.positive {
+  color: #1bb507;
+}
+
+.change.negative {
+  color: #e14145;
+}
+
+/* Bottom Navigation */
+.bottom-navigation {
+  background-color: #1d6ce9;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  padding: 1.2vh 6vw 1.2vh 6vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  min-height: 8.7vh;
+  min-height: 8.7dvh;
+}
+
+.nav-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6vh;
+  cursor: pointer;
+  width: 70px;
+  flex: 0 0 auto;
+}
+
+.nav-button.active .nav-icon-box {
+  background-color: white;
+}
+
+.nav-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  transition: all 0.2s ease;
+}
+
+.nav-button.active .nav-icon-box svg {
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+}
+
+.nav-button-text {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 600;
+  font-size: clamp(12px, 3.5vw, 14px);
+  color: white;
+  text-align: center;
+  text-transform: capitalize;
+  line-height: 1;
+}
+
+/* Mobile-only visibility */
+@media (min-width: 769px) {
+  .market-page {
+    display: none !important;
+  }
+}
+
+/* Mobile landscape adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+  .market-header {
+    min-height: 25vh;
+    min-height: 25dvh;
+  }
+  
+  .market-data-container {
+    min-height: 35vh;
+    min-height: 35dvh;
+  }
+  
+  .bottom-navigation {
+    min-height: 8vh;
+    min-height: 8dvh;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .market-header {
+    padding: 1.5vh 4vw;
+    gap: 1vh;
+  }
+  
+  .equity-amount {
+    font-size: clamp(28px, 7vw, 32px);
+  }
+  
+  .main-menu-buttons {
+    padding: 2vh 4vw;
+  }
+  
+  .category-buttons {
+    padding: 1.2vh 3vw;
+  }
+  
+  .market-data-container {
+    margin: 1.5vh 4vw 0 4vw;
+  }
+}
+
+/* Very small devices */
+@media (max-width: 360px) {
+  .equity-amount {
+    font-size: clamp(24px, 6vw, 28px);
+  }
+  
+  .menu-button-text,
+  .nav-button-text {
+    font-size: clamp(10px, 3vw, 12px);
+  }
+  
+  .category-button {
+    min-width: 80px;
+    font-size: clamp(10px, 3vw, 12px);
+  }
+}

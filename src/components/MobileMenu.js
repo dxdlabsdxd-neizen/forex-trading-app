@@ -2,13 +2,16 @@ import React, { useState } from 'react'
 import './MobileMenu.css'
 import financeTradeImage from '../in.png'
 
-const MobileMenu = () => {
+const MobileMenu = ({ onNavigate }) => {
   const [activeNavItem, setActiveNavItem] = useState('Market')
 
   const handleNavClick = (navItem) => {
     setActiveNavItem(navItem)
     // Add navigation logic here based on your routing needs
     console.log(`Navigating to ${navItem}`)
+    if (onNavigate) {
+      onNavigate(navItem)
+    }
   }
 
   const handleMenuItemClick = (item) => {
