@@ -208,16 +208,15 @@
 /* Chart Filter Categories */
 .chart-filter-categories {
   background: #f8f9fa;
-  padding: 8px 12px;
-  display: flex;
-  flex-wrap: wrap;
+  padding: 8px 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 4px;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   width: 250px;
   margin: 0 auto;
-  flex-direction: row;
 }
 
 .chart-filter-btn {
@@ -225,19 +224,20 @@
   border: none;
   border-radius: 0;
   height: 20px;
-  padding: 4px 8px;
+  padding: 4px 6px;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 10px;
+  font-size: 9px;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   color: #5d5d5d;
   text-transform: capitalize;
-  width: 100px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  min-width: 0;
 }
 
 .chart-filter-btn:hover {
@@ -964,18 +964,20 @@
 /* Chart Filter Categories Responsive */
 @media (max-width: 320px) {
   .chart-filter-categories {
-    flex-direction: column;
-    gap: 6px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
     align-items: stretch;
     padding: 8px;
+    width: 100%;
   }
   
   .chart-filter-btn {
     width: 100%;
     min-width: auto;
-    font-size: 12px;
-    padding: 2px 12px;
-    height: 22px;
+    font-size: 10px;
+    padding: 2px 8px;
+    height: 20px;
   }
 }
 
