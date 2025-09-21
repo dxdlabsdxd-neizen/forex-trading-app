@@ -91,19 +91,19 @@ const SetAlert = ({ isOpen, onClose }) => {
                 <label className="set-alert-label">Condition</label>
                 <div className="set-alert-condition-buttons">
                   <button 
-                    className={`set-alert-condition-btn ${condition === 'ABOVE' ? 'active above' : ''}`}
+                    className={`set-alert-condition-btn above ${condition === 'ABOVE' ? 'active' : ''}`}
                     onClick={() => setCondition('ABOVE')}
                   >
                     ABOVE
                   </button>
                   <button 
-                    className={`set-alert-condition-btn ${condition === 'EQUAL' ? 'active equal' : ''}`}
+                    className={`set-alert-condition-btn equal ${condition === 'EQUAL' ? 'active' : ''}`}
                     onClick={() => setCondition('EQUAL')}
                   >
                     EQUAL
                   </button>
                   <button 
-                    className={`set-alert-condition-btn ${condition === 'BELOW' ? 'active below' : ''}`}
+                    className={`set-alert-condition-btn below ${condition === 'BELOW' ? 'active' : ''}`}
                     onClick={() => setCondition('BELOW')}
                   >
                     BELOW
@@ -116,13 +116,13 @@ const SetAlert = ({ isOpen, onClose }) => {
                 <label className="set-alert-label">Notification Type</label>
                 <div className="set-alert-notification-buttons">
                   <button 
-                    className={`set-alert-notification-btn ${notificationType === 'POP-UP' ? 'active popup' : ''}`}
+                    className={`set-alert-notification-btn popup ${notificationType === 'POP-UP' ? 'active' : ''}`}
                     onClick={() => setNotificationType('POP-UP')}
                   >
                     POP-UP
                   </button>
                   <button 
-                    className={`set-alert-notification-btn ${notificationType === 'E-MAIL' ? 'active email' : ''}`}
+                    className={`set-alert-notification-btn email ${notificationType === 'E-MAIL' ? 'active' : ''}`}
                     onClick={() => setNotificationType('E-MAIL')}
                   >
                     E-MAIL

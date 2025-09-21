@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet'
 import './home.css'
 import AccountStatistics from '../components/AccountStatistics'
 import SetAlert from '../components/SetAlert'
+import MobileMenu from '../components/MobileMenu'
 
 const Home = (props) => {
   const [showDropdown, setShowDropdown] = useState(false)
@@ -14,7 +15,7 @@ const Home = (props) => {
   const [selectedChartCategory, setSelectedChartCategory] = useState('All')
   const [showOrderPanel, setShowOrderPanel] = useState(false)
   const [activeTab, setActiveTab] = useState('MARKET')
-  const [volume, setVolume] = useState('0.01')
+  const [volume, setVolume] = useState('')
   const [stopLoss, setStopLoss] = useState(false)
   const [takeProfit, setTakeProfit] = useState(false)
   const [selectedPair, setSelectedPair] = useState('CADCHF')
@@ -2354,18 +2355,15 @@ const Home = (props) => {
               <div className="volume-section">
                 <label className="volume-label">VOLUME</label>
                 <div className="volume-selector">
-                  <select 
-                    className="volume-dropdown" 
+                  <input 
+                    type="number"
+                    step="0.01"
+                    min="0.01"
+                    className="volume-input" 
                     value={volume} 
                     onChange={(e) => setVolume(e.target.value)}
-                  >
-                    <option value="0.01">0.01</option>
-                    <option value="0.05">0.05</option>
-                    <option value="0.10">0.10</option>
-                    <option value="0.25">0.25</option>
-                    <option value="0.50">0.50</option>
-                    <option value="1.00">1.00</option>
-                  </select>
+                    placeholder="0.01"
+                  />
                 </div>
                 <div className="margin-required">
                   Margin Required: 3.44$
@@ -3176,6 +3174,9 @@ const Home = (props) => {
         isOpen={showSetAlert} 
         onClose={() => setShowSetAlert(false)} 
       />
+
+      {/* Mobile Menu - Only shows on mobile devices */}
+      <MobileMenu />
     </div>
   )
 }

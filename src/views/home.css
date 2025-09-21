@@ -1589,13 +1589,38 @@
   color: #333;
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M14 12l-4-4-4 4'/%3e%3c/svg%3e");
   background-position: right 8px center;
   background-repeat: no-repeat;
   background-size: 14px;
   text-align: center;
   box-shadow: none;
   transition: all 0.2s ease;
+}
+
+.volume-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 0;
+  background: #f8f9fa;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  box-shadow: none;
+  transition: all 0.2s ease;
+}
+
+.volume-input:focus {
+  outline: none;
+  border-color: #1d6ce9;
+  background: #ffffff;
+}
+
+.volume-input::placeholder {
+  color: #999;
+  font-weight: 400;
 }
 
 .volume-dropdown:focus {
@@ -5104,4 +5129,31 @@
   width: 15px;
   height: 15px;
   margin-right: 8px;
+}
+
+/* Mobile Menu Integration - Hide desktop version on mobile */
+@media (max-width: 768px) {
+  .home-container {
+    display: none !important; /* Hide desktop version completely on mobile */
+  }
+}
+
+/* Ensure desktop version is hidden when mobile is active */
+@media (max-width: 768px) and (orientation: portrait) {
+  .home-container {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .home-container {
+    display: none !important;
+  }
+}
+
+/* Force hide desktop on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .home-container {
+    display: none !important;
+  }
 }

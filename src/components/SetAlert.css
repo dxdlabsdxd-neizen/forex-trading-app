@@ -236,48 +236,46 @@
   font-weight: bold;
   font-size: 11px;
   cursor: pointer;
-  background: #EFEFEF;
   transition: all 0.2s;
   padding: 8px 12px;
 }
 
-/* .set-alert-condition-btn.above {
-  background-color: #efefef;
+.set-alert-condition-btn {
+  background-color: #EFEFEF;
   color: #949494;
-} */
+}
 
 .set-alert-condition-btn.above {
-  background-color: rgba(27, 181, 7, 0.15);
-  color: #1bb507;
+  background-color: #D4F4D2;
+  color: #1BB507;
 }
 
-/* .set-alert-condition-btn.equal {
-  background-color: #efefef;
-  color: #949494;
-} */
+.set-alert-condition-btn.above:hover {
+  background-color: #1BB507;
+  color: white;
+}
 
 .set-alert-condition-btn.equal {
-  background-color: #efefef;
+  background-color: #EFEFEF;
   color: #949494;
 }
 
-/* .set-alert-condition-btn.below {
-  background-color: #efefef;
-  color: #949494;
-} */
-
 .set-alert-condition-btn.below {
-  background-color: rgba(225, 65, 69, 0.12);
-  color: #e14145;
+  background-color: #FFEBEE;
+  color: #E14145;
+}
+
+.set-alert-condition-btn.below:hover {
+  background-color: #E14145;
+  color: white;
 }
 
 /* Notification Buttons */
 .set-alert-notification-buttons {
   display: flex;
-  gap: 0;
-  height: 36px;
+  gap: 8px;
+  height: 38px;
 }
-
 .set-alert-notification-btn {
   flex: 1;
   height: 36px;
@@ -291,24 +289,39 @@
   padding: 8px 12px;
 }
 
+.set-alert-notification-btn {
+  background-color: #EFEFEF;
+  color: #949494;
+}
+
 .set-alert-notification-btn.popup {
-  background-color: #efefef;
+  background-color: #EFEFEF;
   color: #949494;
 }
 
 .set-alert-notification-btn.popup.active {
-  background-color: rgba(35, 104, 212, 0.16);
-  color: #1d6ce9;
+  background-color: #DAE5F8;
+  color: #1D6CE9;
+}
+
+.set-alert-notification-btn.popup:hover {
+  background-color: #DAE5F8;
+  color: #1D6CE9;
 }
 
 .set-alert-notification-btn.email {
-  background-color: rgba(35, 104, 212, 0.16);
-  color: #1d6ce9;
+  background-color: #EFEFEF;
+  color: #949494;
 }
 
 .set-alert-notification-btn.email.active {
-  background-color: rgba(35, 104, 212, 0.16);
-  color: #1d6ce9;
+  background-color: #DAE5F8;
+  color: #1D6CE9;
+}
+
+.set-alert-notification-btn.email:hover {
+  background-color: #DAE5F8;
+  color: #1D6CE9;
 }
 
 /* Added Alerts Content */
