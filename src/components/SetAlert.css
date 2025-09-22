@@ -7,10 +7,10 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding-top: 60px;
+  padding: 20px;
 }
 
 .set-alert-modal {
@@ -19,10 +19,10 @@
     border-radius: 0;
     width: 90vw;
     max-width: 350px;
-    max-height: 90vh;
+    max-height: calc(100vh - 40px);
     position: relative;
     box-shadow: 0px 52px 59.1px 0px rgba(0, 0, 0, 0.07);
-    overflow: hidden;
+    overflow-y: auto;
     margin: auto;
 }
 
@@ -96,8 +96,9 @@
   content: '';
   position: absolute;
   bottom: -1px;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
   height: 2px;
   background-color: #1d6ce9;
 }
@@ -111,7 +112,7 @@
 .set-alert-content {
   padding: 18px;
   height: auto;
-  max-height: calc(90vh - 100px);
+  max-height: calc(100vh - 140px);
   overflow-y: auto;
   padding-bottom: 60px;
 }
@@ -328,7 +329,7 @@
 .set-alert-added-content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   height: 100%;
 }
 
@@ -355,10 +356,6 @@
   line-height: 1.4;
 }
 
-.set-alert-added-instrument {
-  margin-top: 8px;
-}
-
 .set-alert-added-items {
   flex: 1;
   display: flex;
@@ -379,37 +376,6 @@
   display: flex;
   align-items: center;
   gap: 12px;
-}
-
-.set-alert-status {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: 'Arial', sans-serif;
-  font-weight: bold;
-  font-size: 10px;
-}
-
-.set-alert-status.active {
-  color: #1bb507;
-}
-
-.set-alert-status.inactive {
-  color: #e14145;
-}
-
-.set-alert-status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-}
-
-.set-alert-status-dot.green {
-  background-color: #1bb507;
-}
-
-.set-alert-status-dot.red {
-  background-color: #e14145;
 }
 
 .set-alert-added-details {
@@ -457,29 +423,6 @@
 .set-alert-action-btn.activate {
   background-color: #1bb507;
   color: white;
-}
-
-.set-alert-delete-btn {
-  background: none;
-  border: none;
-  color: #949494;
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.set-alert-delete-btn:hover {
-  color: #e14145;
-}
-
-/* Added Alerts Content */
-.set-alert-added-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  height: 100%;
 }
 
 /* Create New Price Alert Section */
@@ -539,16 +482,27 @@
 /* Status */
 .set-alert-status {
     position: absolute;
-    top: -19px;
+    top: -16px;
     left: 0px;
     display: flex;
     align-items: center;
     gap: 5px;
-    background-color: #1BB50726;
-    padding: 4px 8px 4px 6px;
-    border-radius: 0;
+    background-color: rgba(27, 181, 7, 0.15);
+    padding: 4px 8px;
+    border-radius: 2px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%);
+}
+
+.set-alert-status::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-left: 6px solid rgba(27, 181, 7, 0.15);
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
 }
 .set-alert-status-dot {
     width: 7px;
@@ -667,23 +621,24 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .set-alert-overlay {
+    padding: 15px;
+  }
+  
   .set-alert-modal {
     width: 95vw;
     max-width: 320px;
-    max-height: 95vh;
+    max-height: calc(100vh - 30px);
   }
   
   .set-alert-content {
-    max-height: calc(95vh - 100px);
+    max-height: calc(100vh - 170px);
+    padding: 15px;
     padding-bottom: 60px;
   }
   
   .set-alert-tabs {
     padding: 0 15px;
-  }
-  
-  .set-alert-content {
-    padding: 15px;
   }
   
   .set-alert-entry {
@@ -695,8 +650,14 @@
   .set-alert-status {
     top: -14px;
     left: 10px;
-    padding: 3px 6px 3px 5px;
-    clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 100%, 0 100%);
+    padding: 3px 6px;
+  }
+  
+  .set-alert-status::after {
+    border-left: 5px solid rgba(27, 181, 7, 0.15);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    right: -5px;
   }
   
   .set-alert-entry-left {

@@ -81,10 +81,10 @@
 /* Force Set Alert icon size */
 .sidebar .nav-icon img[alt="Set Alert"],
 .sidebar .nav-icon img[src*="bell1531-6js4.svg"] {
-  width: 24px !important;
-  height: 25px !important;
-  max-width: 24px !important;
-  max-height: 25px !important;
+  width: 24px;
+  height: 25px;
+  max-width: 24px;
+  max-height: 25px;
 }
 
 .nav-icon img[alt="Settings"] {
@@ -200,7 +200,7 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease, visibility 0.2s ease;
-  z-index: 999;
+  z-index: 1001;
   padding: 0;
   overflow: hidden;
 }
