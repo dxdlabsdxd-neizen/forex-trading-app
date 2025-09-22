@@ -11,7 +11,7 @@
   right: 0;
   bottom: 0;
   overflow: hidden;
-  z-index: 9999;
+  z-index: 1000;
 }
 
 /* Mobile Header */
@@ -42,7 +42,7 @@
   top: 6vh;
   left: 3vw;
   right: 3vw;
-  z-index: 2;
+  z-index: 20;
 }
 
 .mobile-button-group {
@@ -100,18 +100,19 @@
 /* User Info */
 .mobile-user-info {
   position: absolute;
-  top: 18vh;
+  top: 17vh;
   left: 3vw;
   right: 3vw;
   display: flex;
   justify-content: center;
   padding: 1vh 0;
-  z-index: 10;
+  z-index: 15;
 }
 
 .mobile-user-text {
   font-family: 'Public Sans', sans-serif;
   font-weight: bold;
+  font-size: 14px;
   font-size: clamp(12px, 3.5vw, 16px);
   color: #1e1e1e;
   text-transform: uppercase;
@@ -127,7 +128,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 2vh;
   border-radius: 12px;
   padding: 1.2vh 3vw;
   width: 94vw;
@@ -164,6 +164,7 @@
   justify-content: center;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
+  font-size: 14px;
   font-size: clamp(12px, 3.5vw, 15px);
   color: #1e1e1e;
   cursor: pointer;
@@ -220,6 +221,7 @@
 .mobile-logo-text {
   font-family: 'Public Sans', sans-serif;
   font-weight: bold;
+  font-size: 14px;
   font-size: clamp(12px, 3.5vw, 16px);
   color: #1d6ce9;
   letter-spacing: 0.5px;
@@ -321,7 +323,7 @@
   justify-content: space-between;
   padding: 1.5vh 6vw;
   border-radius: 24px 24px 0 0;
-  z-index: 100;
+  z-index: 50;
   box-sizing: border-box;
 }
 
@@ -381,64 +383,37 @@
   text-transform: capitalize;
 }
 
-/* Mobile-only media queries */
+/* Mobile-only display rules - Only show on mobile devices */
 @media (max-width: 768px) {
   .mobile-menu-container {
-    display: block; /* Show only on mobile */
-  }
-}
-
-/* Specifically hide on desktop and larger screens */
-@media (min-width: 769px) {
-  .mobile-menu-container {
-    display: none !important; /* Force hide on desktop */
-  }
-}
-
-/* Hide on desktop when window is minimized but still large */
-@media (min-width: 1024px) {
-  .mobile-menu-container {
-    display: none !important; /* Force hide on desktop */
-  }
-}
-
-/* Additional breakpoints for tablets in landscape */
-@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
-  .mobile-menu-container {
-    display: none !important; /* Hide on tablet landscape */
-  }
-}
-
-/* Only show on mobile portrait and small screens */
-@media (max-width: 768px) and (orientation: portrait) {
-  .mobile-menu-container {
     display: block;
   }
 }
 
+/* Force hide on all larger screens and desktop devices */
+@media (min-width: 769px), (hover: hover) and (pointer: fine) {
+  .mobile-menu-container {
+    display: none !important;
+  }
+}
+
+/* Responsive adjustments for landscape orientation */
 @media (max-width: 768px) and (orientation: landscape) {
-  .mobile-menu-container {
-    display: block;
-  }
-  
   .mobile-user-info {
     top: 15vh;
   }
   
   .mobile-menu-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 4.5vh;
     width: 95vw;
     height: 60vh;
     height: 60dvh;
-    padding: 2.2vh 7vw 1.8vh;
+    padding: 1.8vh 4vw;
     gap: 1.2vh;
-}
+  }
+  
   .mobile-menu-item {
-    height: 5vh;
+    height: 4.5vh;
+    min-height: 35px;
   }
   
   .mobile-footer-links {
@@ -466,34 +441,19 @@
     font-size: 12px;
   }
   
-  .mobile-user-info {
-    top: 18vh;
-  }
-  
   .mobile-menu-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 2.5vh;
     width: 95vw;
     height: 60vh;
     height: 60dvh;
     padding: 2.2vh 3vw 0.8vh 3vw;
     gap: 1.2vh;
-}
+  }
+  
   .mobile-menu-item {
     height: 5.5vh;
   }
   
   .mobile-footer-row {
     gap: 10vw;
-  }
-}
-
-/* Ensure it never shows on PC/Desktop regardless of window size */
-@media (hover: hover) and (pointer: fine) {
-  .mobile-menu-container {
-    display: none !important;
   }
 }
