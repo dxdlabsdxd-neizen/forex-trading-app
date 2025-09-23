@@ -107,9 +107,9 @@ const HistoryPage = ({ onClose }) => {
   const handleTradeClick = (trade) => {
     setSelectedTrade(trade)
     setShowModal(true)
-    // Set initial height to ensure all content is visible
-    const contentHeight = window.innerHeight - 87 // Full height minus navigation
-    const maxHeight = window.innerHeight - 87 // Full height minus navigation
+    // Set initial height to content height
+    const contentHeight = 400 // Approximate content height
+    const maxHeight = window.innerHeight - 87
     setModalHeight(Math.min(contentHeight, maxHeight))
   }
 
@@ -127,9 +127,10 @@ const HistoryPage = ({ onClose }) => {
   // Handle drag start
   const handleDragStart = (e) => {
     setIsDragging(true)
-    setStartY(e.clientY)
-    const contentHeight = window.innerHeight - 87 // Full height minus navigation
-    const maxHeight = window.innerHeight - 87 // Full height minus navigation
+    const clientY = e.clientY || (e.touches && e.touches[0].clientY)
+    setStartY(clientY)
+    const contentHeight = 450 // Slightly larger content height for better visibility
+    const maxHeight = window.innerHeight - 87
     const initialHeight = Math.min(contentHeight, maxHeight)
     setStartHeight(modalHeight || initialHeight)
     e.preventDefault()
@@ -139,11 +140,13 @@ const HistoryPage = ({ onClose }) => {
   const handleDragMove = (e) => {
     if (!isDragging) return
     
-    const deltaY = startY - e.clientY // Reverse because we're dragging up
-    const maxContentHeight = window.innerHeight - 180 // More space above navigation
-    const contentHeight = window.innerHeight - 87 // Full height minus navigation
+    const clientY = e.clientY || (e.touches && e.touches[0].clientY)
+    const deltaY = startY - clientY // Reverse because we're dragging up
+    const maxContentHeight = window.innerHeight - 87 // Screen height minus navigation
+    const contentHeight = 450 // Slightly larger content height for better visibility
     const minHeight = Math.min(contentHeight, maxContentHeight)
-    const newHeight = Math.max(minHeight, Math.min(maxContentHeight, startHeight + deltaY))
+    const maxDragHeight = maxContentHeight - 20 // Leave some space from top
+    const newHeight = Math.max(minHeight, Math.min(maxDragHeight, startHeight + deltaY))
     setModalHeight(newHeight)
   }
 
@@ -392,19 +395,12 @@ const HistoryPage = ({ onClose }) => {
             onClick={(e) => e.stopPropagation()}
             style={{ height: modalHeight || 'auto' }}
           >
-            {/* Blue Background that extends behind navigation */}
-            <div className="modal-background"></div>
-            {/* Drag Handle */}
+            {/* Modal Header - Now fully draggable */}
             <div 
-              className="drag-handle"
+              className="modal-header"
               onMouseDown={handleDragStart}
               onTouchStart={handleDragStart}
             >
-              <div className="drag-indicator"></div>
-            </div>
-
-            {/* Modal Header */}
-            <div className="modal-header">
               <div className="modal-title">
                 <p>{selectedTrade.symbol}</p>
               </div>

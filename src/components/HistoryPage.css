@@ -604,16 +604,14 @@
 }
 
 .modal-content {
-  background-color: transparent; /* Transparent background for the container */
+  background: linear-gradient(180deg, #1d6ce9 0%, #103d83 100%);
   border-radius: 24px; /* Full rounded corners like the design */
   width: 100%;
   max-width: 393px;
   height: auto; /* Auto height to fit content only */
-  min-height: calc(100vh - 87px); /* Full height minus navigation */
-  max-height: calc(100vh - 87px); /* Full height minus navigation */
+  min-height: auto; /* No minimum height - only what's needed */
+  max-height: calc(100vh - 87px); /* Don't exceed screen minus navigation */
   overflow: visible; /* Allow content to be visible */
-  margin-bottom: 0; /* No margin, extends to navigation */
-  position: relative;
   box-shadow: 
     inset 0 4px 20px rgba(0, 0, 0, 0.3),
     inset 0 0 0 1px rgba(255, 255, 255, 0.1),
@@ -621,27 +619,11 @@
   transform: translateY(100%); /* Start from behind navigation */
   animation: slideUp 0.3s ease-out forwards;
   margin-bottom: 0; /* No space, directly above navigation */
+  transition: height 0.1s ease-out; /* Smooth height transitions during drag */
   position: relative;
   bottom: 0; /* Position at bottom, behind navigation */
   display: flex;
   flex-direction: column; /* Flex layout for proper content distribution */
-  transition: height 0.2s ease; /* Smooth height transition */
-}
-
-/* Blue background that extends behind navigation */
-.modal-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #11418c;
-  border-radius: 24px;
-  z-index: -1; /* Behind the fields */
-  box-shadow: 
-    inset 0 4px 20px rgba(0, 0, 0, 0.3),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-    0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 /* Drag Handle */
@@ -701,7 +683,7 @@
 }
 
 .modal-header {
-  background-color: #11418c;
+  background: transparent; /* Let parent modal-content handle the background */
   padding: 16px 20px 12px;
   padding-top: 24px; /* Space for drag handle */
   display: flex;
@@ -710,8 +692,14 @@
   position: relative;
   min-height: 60px; /* Reduced header height */
   border-radius: 24px 24px 0 0; /* Rounded top corners */
-  z-index: 10; /* Above the background */
-  margin-bottom: 87px; /* Space to push above navigation */
+  cursor: grab; /* Show grab cursor for entire header */
+  user-select: none; /* Prevent text selection while dragging */
+  transition: background-color 0.2s ease; /* Smooth transition */
+}
+
+.modal-header:active {
+  cursor: grabbing; /* Show grabbing cursor when dragging */
+  background-color: rgba(255, 255, 255, 0.05); /* Subtle feedback when dragging */
 }
 
 .modal-title p {
@@ -728,9 +716,8 @@
   cursor: pointer;
   padding: 8px;
   position: absolute;
-  right: 24px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 20px;
+  top: 16px; /* Position at top of header */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -738,6 +725,7 @@
   height: 32px;
   border-radius: 50%;
   transition: background-color 0.2s ease;
+  z-index: 10; /* Ensure it's above other elements */
 }
 
 .modal-close:hover {
@@ -745,7 +733,7 @@
 }
 
 .modal-body {
-  background-color: #11418c;
+  background: transparent; /* Let parent modal-content handle the background */
   padding: 0 20px 20px;
   display: flex;
   flex-direction: column;
@@ -754,7 +742,6 @@
   flex: 0 0 auto; /* Only take space needed for content */
   justify-content: flex-start; /* Start from top to ensure all content is visible */
   border-radius: 0 0 24px 24px; /* Rounded bottom corners */
-  z-index: 10; /* Above the background */
   box-shadow: 
     inset 0 2px 10px rgba(0, 0, 0, 0.2),
     inset 0 0 0 1px rgba(255, 255, 255, 0.05);
@@ -819,10 +806,7 @@
     max-width: 100%;
     width: 100%;
     border-radius: 24px; /* Full rounded corners for tablet */
-    height: auto; /* Auto height to fit content */
-    min-height: calc(100vh - 75px); /* Full height minus navigation */
-    max-height: calc(100vh - 75px); /* Full height minus navigation */
-    margin-bottom: 0; /* No margin, extends to navigation */
+    height: calc(100vh - 75px); /* Adjust for tablet navigation */
     box-shadow: 
       3px -1px 50px 2px inset rgba(0, 0, 0, 0.6),
       0 0 0 1px inset rgba(255, 255, 255, 0.08),
@@ -845,11 +829,11 @@
   }
   
   .modal-close {
-    right: 15px;
-    width: 26px;
-    top: 35px;
-    height: 18px;
-    padding: 5px;
+    right: 18px;
+    top: 18px; /* Position at top of header */
+    width: 28px;
+    height: 28px;
+    padding: 6px;
 }
   
   .modal-title p {
@@ -886,10 +870,10 @@
     width: 100%;
     max-width: 100%;
     height: auto; /* Auto height to fit content only */
-    min-height: calc(100vh - 75px); /* Full height minus navigation */
-    max-height: calc(100vh - 75px); /* Full height minus navigation */
+    min-height: auto; /* No minimum height - only what's needed */
+    max-height: calc(100vh - 75px);
     border-radius: 24px; /* Full rounded corners for mobile */
-    margin-bottom: 0; /* No margin, extends to navigation */
+    margin-bottom: 0; /* No space, directly above navigation */
     bottom: 0; /* Position at bottom, behind navigation */
     box-shadow: 
       3px -1px 40px 2px inset rgba(0, 0, 0, 0.6),
@@ -915,11 +899,11 @@
   }
   
   .modal-close {
-    right: 15px;
-    width: 26px;
-    top: 35px;
-    height: 18px;
-    padding: 5px;
+    right: 18px;
+    top: 18px; /* Position at top of header */
+    width: 28px;
+    height: 28px;
+    padding: 6px;
 }
   .modal-title p {
     font-size: 16px;
@@ -951,10 +935,9 @@
 @media (max-width: 360px) {
   .modal-content {
     height: auto; /* Auto height to fit content only */
-    min-height: calc(100vh - 70px); /* Full height minus navigation */
-    max-height: calc(100vh - 70px); /* Full height minus navigation */
+    min-height: auto; /* No minimum height - only what's needed */
+    max-height: calc(100vh - 70px); /* Adjust for smaller navigation */
     border-radius: 24px; /* Full rounded corners for small mobile */
-    margin-bottom: 0; /* No margin, extends to navigation */
   }
   
   .modal-header {
@@ -963,11 +946,11 @@
   }
   
   .modal-close {
-    right: 15px;
-    width: 26px;
-    top: 35px;
-    height: 18px;
-    padding: 5px;
+    right: 18px;
+    top: 18px; /* Position at top of header */
+    width: 28px;
+    height: 28px;
+    padding: 6px;
 }
   .modal-title p {
     font-size: 14px;
