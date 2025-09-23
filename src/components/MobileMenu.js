@@ -4,7 +4,7 @@ import financeTradeImage from '../in.png'
 import HistoryPage from './HistoryPage'
 
 const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
-  const [activeNavItem, setActiveNavItem] = useState('Market')
+  const [activeNavItem, setActiveNavItem] = useState('Chart')
   const [showHistoryPage, setShowHistoryPage] = useState(false)
 
   const handleNavClick = (navItem) => {
@@ -28,7 +28,7 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
 
   const handleCloseHistory = () => {
     setShowHistoryPage(false)
-    setActiveNavItem('Market')
+    setActiveNavItem('Chart')
   }
 
   // Handle window resize to close history page if screen becomes desktop size
@@ -36,7 +36,7 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
     const handleResize = () => {
       if (window.innerWidth > 768 && showHistoryPage) {
         setShowHistoryPage(false)
-        setActiveNavItem('Market')
+        setActiveNavItem('Chart')
       }
     }
 
@@ -147,15 +147,6 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
 
       {/* Bottom Navigation */}
       <div className="mobile-bottom-nav">
-        <div className={`mobile-nav-item ${activeNavItem === 'Market' ? 'active' : ''}`} onClick={() => handleNavClick('Market')}>
-          <div className="mobile-nav-icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 20L12 8L18 14L24 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M24 4H18V10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-          <span className="mobile-nav-text">Market</span>
-        </div>
         
         <div className={`mobile-nav-item ${activeNavItem === 'Chart' ? 'active' : ''}`} onClick={() => handleNavClick('Chart')}>
           <div className="mobile-nav-icon">

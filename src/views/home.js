@@ -14,7 +14,7 @@ const Home = (props) => {
   const [dropdownTimeout, setDropdownTimeout] = useState(null)
   const [selectedChartCategory, setSelectedChartCategory] = useState('All')
   const [showOrderPanel, setShowOrderPanel] = useState(false)
-  const [activeTab, setActiveTab] = useState('MARKET')
+  const [activeTab, setActiveTab] = useState('ORDER')
   const [volume, setVolume] = useState('')
   const [stopLoss, setStopLoss] = useState(false)
   const [takeProfit, setTakeProfit] = useState(false)
@@ -52,7 +52,7 @@ const Home = (props) => {
   const [withdrawalMethod, setWithdrawalMethod] = useState('bank')
   const [withdrawalPage, setWithdrawalPage] = useState(1)
   const [showSearchModal, setShowSearchModal] = useState(false)
-  const [searchActiveTab, setSearchActiveTab] = useState('MARKET')
+  const [searchActiveTab, setSearchActiveTab] = useState('POSITIONS')
   const [showHelpDeskModal, setShowHelpDeskModal] = useState(false)
   const [helpDeskForm, setHelpDeskForm] = useState({
     fullName: 'Emma',
@@ -173,7 +173,6 @@ const Home = (props) => {
     {
       id: 1,
       instrument: 'CADJPY',
-      market: 'Major',
       change: '+%2.5',
       buyPrice: '107.081',
       spread: '0',
@@ -183,7 +182,6 @@ const Home = (props) => {
     {
       id: 2,
       instrument: 'CADJPY',
-      market: 'Major',
       change: '+%2.5',
       buyPrice: '107.081',
       spread: '12.0',
@@ -193,7 +191,6 @@ const Home = (props) => {
     {
       id: 3,
       instrument: 'EURUSD',
-      market: 'Major',
       change: '+%1.2',
       buyPrice: '1.09123',
       spread: '0.5',
@@ -203,7 +200,6 @@ const Home = (props) => {
     {
       id: 4,
       instrument: 'GBPUSD',
-      market: 'Major',
       change: '-%0.8',
       buyPrice: '1.26789',
       spread: '1.2',
@@ -213,7 +209,6 @@ const Home = (props) => {
     {
       id: 5,
       instrument: 'USDJPY',
-      market: 'Major',
       change: '+%3.1',
       buyPrice: '149.234',
       spread: '0.8',
@@ -223,7 +218,6 @@ const Home = (props) => {
     {
       id: 6,
       instrument: 'AUDUSD',
-      market: 'Major',
       change: '-%1.5',
       buyPrice: '0.65234',
       spread: '0.3',
@@ -233,7 +227,6 @@ const Home = (props) => {
     {
       id: 7,
       instrument: 'USDCAD',
-      market: 'Major',
       change: '+%0.9',
       buyPrice: '1.35678',
       spread: '0.6',
@@ -1883,7 +1876,6 @@ const Home = (props) => {
                 <thead>
                   <tr>
                     <th>Instruments</th>
-                    <th>Market</th>
                     <th>Change</th>
                     <th>Buy</th>
                     <th>Spread</th>
@@ -1895,7 +1887,6 @@ const Home = (props) => {
                   {watchlistData.map((item) => (
                     <tr key={item.id}>
                       <td className="instrument-cell">{item.instrument}</td>
-                      <td className="market-cell">{item.market}</td>
                       <td className={`change-cell ${item.change.startsWith('+') ? 'positive' : 'negative'}`}>
                         {item.change}
                       </td>
@@ -2339,13 +2330,6 @@ const Home = (props) => {
 
             {/* Tabs */}
             <div className="order-panel-tabs">
-              <button 
-                className={`order-tab ${activeTab === 'MARKET' ? 'active' : ''}`}
-                onClick={() => setActiveTab('MARKET')}
-              >
-                MARKET
-              </button>
-              <div className="order-tab-separator"></div>
               <button 
                 className={`order-tab ${activeTab === 'ORDER' ? 'active' : ''}`}
                 onClick={() => setActiveTab('ORDER')}
@@ -2916,12 +2900,6 @@ const Home = (props) => {
             
             <div className="search-tabs">
               <div 
-                className={`search-tab ${searchActiveTab === 'MARKET' ? 'active' : ''}`}
-                onClick={() => handleSearchTabClick('MARKET')}
-              >
-                MARKET
-              </div>
-              <div 
                 className={`search-tab ${searchActiveTab === 'POSITIONS' ? 'active' : ''}`}
                 onClick={() => handleSearchTabClick('POSITIONS')}
               >
@@ -2935,66 +2913,7 @@ const Home = (props) => {
               </div>
             </div>
             
-            <table className="search-market-table">
-              <thead>
-                <tr>
-                  <th>Instrument</th>
-                  <th>Forex</th>
-                  <th>Change</th>
-                  <th>Bid</th>
-                  <th>Spread</th>
-                  <th>Ask</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>CADCHF</td>
-                  <td>Major</td>
-                  <td className="search-change positive">+0.02%</td>
-                  <td className="search-bid">0.58258</td>
-                  <td>0</td>
-                  <td className="search-ask">0.58258</td>
-                </tr>
-                <tr>
-                  <td>CADJPY</td>
-                  <td>Major</td>
-                  <td className="search-change positive">+0.02%</td>
-                  <td className="search-bid">0.58258</td>
-                  <td>12.00</td>
-                  <td className="search-ask">0.58258</td>
-                </tr>
-                <tr>
-                  <td>CHFJPY</td>
-                  <td>Major</td>
-                  <td className="search-change positive">+0.02%</td>
-                  <td className="search-bid">0.58258</td>
-                  <td>0</td>
-                  <td className="search-ask">0.58258</td>
-                </tr>
-                <tr>
-                  <td>EURCAD</td>
-                  <td>Major</td>
-                  <td className="search-change positive">+0.02%</td>
-                  <td className="search-bid">0.58258</td>
-                  <td>0</td>
-                  <td className="search-ask">0.58258</td>
-                </tr>
-                <tr>
-                  <td>EURCHF</td>
-                  <td>Major</td>
-                  <td className="search-change positive">+0.02%</td>
-                  <td className="search-bid">1.05159</td>
-                  <td>21</td>
-                  <td className="search-ask">1.05159</td>
-                </tr>
-                <tr>
-                  <td>EURGBP</td>
-                  <td>Minor</td>
-                  <td className="search-change positive">+0.02%</td>
-                  <td className="search-bid">0.58258</td>
-                  <td>12.00</td>
-                  <td className="search-ask">0.58258</td>
-                </tr>
+            {/* Market table removed */}
                 <tr>
                   <td>EURJPY</td>
                   <td>Minor</td>
