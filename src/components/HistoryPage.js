@@ -107,9 +107,9 @@ const HistoryPage = ({ onClose }) => {
   const handleTradeClick = (trade) => {
     setSelectedTrade(trade)
     setShowModal(true)
-    // Set initial height to content height
-    const contentHeight = 400 // Approximate content height
-    const maxHeight = window.innerHeight - 87
+    // Set initial height to ensure all content is visible
+    const contentHeight = window.innerHeight - 87 // Full height minus navigation
+    const maxHeight = window.innerHeight - 87 // Full height minus navigation
     setModalHeight(Math.min(contentHeight, maxHeight))
   }
 
@@ -128,8 +128,8 @@ const HistoryPage = ({ onClose }) => {
   const handleDragStart = (e) => {
     setIsDragging(true)
     setStartY(e.clientY)
-    const contentHeight = 400 // Approximate content height
-    const maxHeight = window.innerHeight - 87
+    const contentHeight = window.innerHeight - 87 // Full height minus navigation
+    const maxHeight = window.innerHeight - 87 // Full height minus navigation
     const initialHeight = Math.min(contentHeight, maxHeight)
     setStartHeight(modalHeight || initialHeight)
     e.preventDefault()
@@ -140,8 +140,8 @@ const HistoryPage = ({ onClose }) => {
     if (!isDragging) return
     
     const deltaY = startY - e.clientY // Reverse because we're dragging up
-    const maxContentHeight = window.innerHeight - 87 // Screen height minus navigation
-    const contentHeight = 400 // Approximate content height (header + fields + padding)
+    const maxContentHeight = window.innerHeight - 180 // More space above navigation
+    const contentHeight = window.innerHeight - 87 // Full height minus navigation
     const minHeight = Math.min(contentHeight, maxContentHeight)
     const newHeight = Math.max(minHeight, Math.min(maxContentHeight, startHeight + deltaY))
     setModalHeight(newHeight)
@@ -392,6 +392,8 @@ const HistoryPage = ({ onClose }) => {
             onClick={(e) => e.stopPropagation()}
             style={{ height: modalHeight || 'auto' }}
           >
+            {/* Blue Background that extends behind navigation */}
+            <div className="modal-background"></div>
             {/* Drag Handle */}
             <div 
               className="drag-handle"
