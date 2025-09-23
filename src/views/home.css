@@ -3213,10 +3213,6 @@
   font-size: 13px;
 }
 
-.market-cell {
-  color: #666;
-  font-size: 11px;
-}
 
 .change-cell.positive {
   color: #2e7d32;
@@ -4144,36 +4140,6 @@
   border-bottom-color: #007bff;
 }
 
-.search-market-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #fff;
-}
-
-.search-market-table thead {
-  background-color: #f9f9f9;
-}
-
-.search-market-table th, .search-market-table td {
-  padding: 0.75rem 1rem;
-  text-align: left;
-  border-bottom: none;
-  font-size: 0.75rem;
-  font-family: Arial, sans-serif;
-}
-
-.search-market-table th {
-  color: #666;
-  font-weight: normal;
-}
-
-.search-market-table td {
-  color: #333;
-}
-
-.search-market-table tr:last-child td {
-  border-bottom: none;
-}
 
 .search-change.positive {
   color: green;
