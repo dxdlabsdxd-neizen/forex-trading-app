@@ -6,23 +6,12 @@ import './home.css'
 import AccountStatistics from '../components/AccountStatistics'
 import SetAlert from '../components/SetAlert'
 import MobileMenu from '../components/MobileMenu'
-import MarketPage from '../components/MarketPage'
 
 const Home = (props) => {
   const [showDropdown, setShowDropdown] = useState(false)
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false)
   const [hoveredChart, setHoveredChart] = useState(false)
-  const [currentPage, setCurrentPage] = useState('Market')
   const [dropdownTimeout, setDropdownTimeout] = useState(null)
-
-  const handleNavigation = (page) => {
-    setCurrentPage(page)
-    console.log(`Navigating to: ${page}`)
-  }
-
-  const handleMenuClick = () => {
-    setCurrentPage('Menu')
-  }
   const [selectedChartCategory, setSelectedChartCategory] = useState('All')
   const [showOrderPanel, setShowOrderPanel] = useState(false)
   const [activeTab, setActiveTab] = useState('MARKET')
@@ -59,6 +48,7 @@ const Home = (props) => {
   const [depositAmount, setDepositAmount] = useState('100')
   const [showWithdrawalModal, setShowWithdrawalModal] = useState(false)
   const [withdrawalAmount, setWithdrawalAmount] = useState('100')
+  const [currentMobilePage, setCurrentMobilePage] = useState('Menu')
   const [withdrawalMethod, setWithdrawalMethod] = useState('bank')
   const [withdrawalPage, setWithdrawalPage] = useState(1)
   const [showSearchModal, setShowSearchModal] = useState(false)
@@ -498,6 +488,10 @@ const Home = (props) => {
       }
     }
   }, [dropdownTimeout])
+
+  const handleMobileNavigation = (page) => {
+    setCurrentMobilePage(page)
+  }
 
   const handleWidgetHover = () => {
     // Clear any existing timeout
@@ -3186,12 +3180,15 @@ const Home = (props) => {
         onClose={() => setShowSetAlert(false)} 
       />
 
-      {/* Mobile Components - Only shows on mobile devices */}
-      {currentPage === 'Menu' ? (
-        <MobileMenu onNavigate={handleNavigation} />
-      ) : (
-        <MarketPage onMenuClick={handleMenuClick} />
+      {/* Mobile Components - Only show on mobile devices */}
+      {currentMobilePage === 'Menu' && (
+        <MobileMenu 
+          onNavigate={handleMobileNavigation}
+          currentPage={currentMobilePage}
+          onOpenDepositModal={openDepositModal}
+        />
       )}
+      
     </div>
   )
 }

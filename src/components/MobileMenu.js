@@ -1,23 +1,54 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './MobileMenu.css'
 import financeTradeImage from '../in.png'
+import HistoryPage from './HistoryPage'
 
-const MobileMenu = ({ onNavigate }) => {
+const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
   const [activeNavItem, setActiveNavItem] = useState('Market')
+  const [showHistoryPage, setShowHistoryPage] = useState(false)
 
   const handleNavClick = (navItem) => {
     setActiveNavItem(navItem)
-    // Add navigation logic here based on your routing needs
-    console.log(`Navigating to ${navItem}`)
-    if (onNavigate) {
-      onNavigate(navItem)
+    if (navItem === 'History') {
+      setShowHistoryPage(true)
+    } else if (navItem === 'Deposit') {
+      if (onOpenDepositModal) {
+        onOpenDepositModal()
+      }
+    } else {
+      setShowHistoryPage(false)
     }
+    console.log(`Navigating to ${navItem}`)
   }
 
   const handleMenuItemClick = (item) => {
     // Add menu item click logic here
     console.log(`Menu item clicked: ${item}`)
   }
+
+  const handleCloseHistory = () => {
+    setShowHistoryPage(false)
+    setActiveNavItem('Market')
+  }
+
+  // Handle window resize to close history page if screen becomes desktop size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768 && showHistoryPage) {
+        setShowHistoryPage(false)
+        setActiveNavItem('Market')
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [showHistoryPage])
+
+  // Show History page if active (only on mobile)
+  if (showHistoryPage && window.innerWidth <= 768) {
+    return <HistoryPage onClose={handleCloseHistory} />
+  }
+
   return (
     <div className="mobile-menu-container">
       {/* Top Header Section */}
@@ -36,7 +67,7 @@ const MobileMenu = ({ onNavigate }) => {
               <span className="mobile-btn-text">Menu</span>
             </div>
             
-            <div className="mobile-menu-btn">
+            <div className="mobile-menu-btn" onClick={() => handleNavClick('Deposit')}>
               <div className="mobile-btn-icon">
                 <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M21.3571 4.46512H2.58163C2.27041 4.46512 1.97193 4.31811 1.75186 4.05643C1.5318 3.79475 1.40816 3.43984 1.40816 3.06977C1.40816 2.6997 1.5318 2.34479 1.75186 2.08311C1.97193 1.82143 2.27041 1.67442 2.58163 1.67442H18.5408C18.7276 1.67442 18.9066 1.58621 19.0387 1.42921C19.1707 1.2722 19.2449 1.05925 19.2449 0.837209C19.2449 0.615168 19.1707 0.40222 19.0387 0.245213C18.9066 0.0882056 18.7276 0 18.5408 0H2.58163C1.89694 0 1.24029 0.323421 0.756142 0.899114C0.271992 1.47481 0 2.25561 0 3.06977V20.9302C0 21.7444 0.271992 22.5252 0.756142 23.1009C1.24029 23.6766 1.89694 24 2.58163 24H21.3571C21.7929 24 22.2107 23.7942 22.5188 23.4278C22.8269 23.0615 23 22.5646 23 22.0465V6.4186C23 5.90051 22.8269 5.40363 22.5188 5.03728C22.2107 4.67093 21.7929 4.46512 21.3571 4.46512ZM21.5918 22.0465C21.5918 22.1205 21.5671 22.1915 21.5231 22.2438C21.4791 22.2962 21.4194 22.3256 21.3571 22.3256H2.58163C2.27041 22.3256 1.97193 22.1786 1.75186 21.9169C1.5318 21.6552 1.40816 21.3003 1.40816 20.9302V5.80326C1.77122 6.02484 2.17354 6.14013 2.58163 6.13953H21.3571C21.4194 6.13953 21.4791 6.16894 21.5231 6.22127C21.5671 6.27361 21.5918 6.34459 21.5918 6.4186V22.0465ZM18.3061 13.6744C18.3061 13.9504 18.2373 14.2202 18.1084 14.4496C17.9794 14.6791 17.7961 14.8579 17.5817 14.9636C17.3673 15.0692 17.1314 15.0968 16.9037 15.043C16.6761 14.9891 16.467 14.8562 16.3029 14.6611C16.1388 14.4659 16.027 14.2173 15.9817 13.9466C15.9365 13.676 15.9597 13.3954 16.0485 13.1404C16.1373 12.8855 16.2877 12.6676 16.4807 12.5142C16.6737 12.3609 16.9006 12.2791 17.1327 12.2791C17.4439 12.2791 17.7424 12.4261 17.9624 12.6878C18.1825 12.9494 18.3061 13.3043 18.3061 13.6744Z" fill="white"/>
@@ -73,7 +104,11 @@ const MobileMenu = ({ onNavigate }) => {
             <span>Withdrawal</span>
           </button>
           
-          <button className="mobile-menu-item" onClick={() => handleMenuItemClick('Deposit')}>
+          <button className="mobile-menu-item" onClick={() => {
+            if (onOpenDepositModal) {
+              onOpenDepositModal()
+            }
+          }}>
             <span>Deposit</span>
           </button>
           

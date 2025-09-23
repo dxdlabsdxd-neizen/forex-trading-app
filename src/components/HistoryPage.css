@@ -1,0 +1,971 @@
+/* History Page Styles - Exact Figma Match - Mobile Only */
+.history-page-container {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+/* Header Section */
+.history-header {
+  position: relative;
+  width: 100%;
+  height: 282px;
+  flex-shrink: 0;
+}
+
+.header-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #1d6ce9 0%, #103d83 100%);
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+
+.header-shadow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0px 4px 36.1px 9px rgba(0, 0, 0, 0.25);
+}
+
+.header-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 60px);
+  max-width: 350px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 190px;
+  flex-shrink: 0;
+}
+
+.closed-position-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.2;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.closed-position-title p {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.pnl-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 140px;
+}
+
+.pnl-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #eaeaea;
+  margin-bottom: 2px;
+}
+
+.pnl-label p {
+  margin: 0;
+  line-height: 1;
+}
+
+.pnl-amount {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: white;
+}
+
+.pnl-amount p {
+  margin: 0;
+  line-height: 1;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 118px;
+  flex-shrink: 0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+.stat-item:last-child {
+  margin-bottom: 0;
+}
+
+.stat-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  color: #c8c6c6;
+  margin-bottom: 8px;
+}
+.stat-label p {
+  margin: 0;
+  line-height: 1;
+}
+
+.stat-value {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+}
+
+.stat-value p {
+  margin: 0;
+  line-height: 1;
+}
+
+/* Main Content */
+.history-main-content {
+  position: absolute;
+  top: 241px;
+  left: 12px;
+  width: calc(100% - 24px);
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Tab Section */
+.history-tabs {
+  width: 100%;
+  height: 71px;
+  background-color: #dde9fc;
+  border-radius: 12px;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  width: 100%;
+  max-width: 350px;
+}
+
+.tab-button {
+  flex: 1;
+  height: 53px;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-button.active {
+  background-color: #1d6ce9;
+}
+
+.tab-button:not(.active) {
+  background-color: white;
+}
+
+.tab-button p {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: capitalize;
+  text-align: center;
+  white-space: pre;
+  margin: 0;
+  line-height: normal;
+}
+
+.tab-button.active p {
+  color: white;
+}
+
+.tab-button:not(.active) p {
+  color: #1e1e1e;
+}
+
+/* Transaction Table */
+.transaction-table-container {
+  width: 100%;
+  height: 137px;
+  position: relative;
+}
+
+.table-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 38px;
+  background-color: #1756ba;
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.header-row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  width: 100%;
+}
+
+.header-cell {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  color: white;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.header-cell.symbol {
+  width: 52px;
+}
+
+.header-cell.type {
+  width: 50px;
+}
+
+.header-cell.enter-price {
+  width: 76px;
+}
+
+.header-cell.close-price {
+  width: 60px;
+}
+
+.header-cell.profit {
+  width: 65px;
+}
+
+.header-cell p {
+  margin: 0;
+  line-height: normal;
+}
+
+.table-body {
+  position: absolute;
+  top: 39px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.table-row {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  padding: 0 10px;
+  background-color: #f2f2f2;
+  width: 100%;
+  height: 34px;
+  box-sizing: border-box;
+}
+
+.table-cell {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.table-cell.symbol {
+  font-weight: 600;
+  color: #1e1e1e;
+  width: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.table-cell.type {
+  font-weight: 600;
+  width: 44px;
+}
+
+.table-cell.type .buy {
+  color: #1bb507;
+}
+
+.table-cell.type .sell {
+  color: #e14145;
+}
+
+.table-cell.enter-price {
+  font-weight: 400;
+  color: #707070;
+  width: 77px;
+}
+
+.table-cell.close-price {
+  font-weight: 400;
+  color: #707070;
+  width: 65px;
+}
+
+.table-cell.profit {
+  font-weight: 600;
+  width: 52px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.table-cell.profit .profit-positive {
+  color: #1bb507;
+}
+
+.table-cell.profit .profit-negative {
+  color: #e14145;
+}
+
+.table-cell p {
+  margin: 0;
+  line-height: normal;
+}
+
+/* Bottom Navigation */
+.history-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 87px;
+  background: linear-gradient(180deg, #1d6ce9 0%, #103d83 100%);
+  border-radius: 24px 24px 0 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 12px 24px;
+  box-sizing: border-box;
+  z-index: 9999; /* Higher than modal */
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  width: 70px;
+  height: 100%;
+  justify-content: flex-end;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-icon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.nav-item.active .nav-icon {
+  background-color: white;
+}
+
+.nav-text {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  text-transform: capitalize;
+  line-height: normal;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .history-page-container {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .header-content {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 40px);
+    max-width: 320px;
+    gap: 15px;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .header-left {
+    width: 160px;
+    flex-shrink: 0;
+  }
+
+  .header-right {
+    width: 100px;
+    flex-shrink: 0;
+  }
+
+  .closed-position-title {
+    font-size: 22px;
+  }
+
+  .pnl-amount {
+    font-size: 24px;
+  }
+
+  .stat-value {
+    font-size: 16px;
+  }
+
+  .history-main-content {
+    left: 8px;
+    width: calc(100% - 16px);
+  }
+
+  .tab-button {
+    width: 140px;
+    height: 45px;
+  }
+
+  .tab-button p {
+    font-size: 13px;
+  }
+
+  .history-bottom-nav {
+    height: 75px;
+    padding: 10px 20px;
+  }
+
+  .nav-item {
+    width: 60px;
+  }
+
+  .nav-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 30px);
+    max-width: 280px;
+    gap: 101px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .header-left {
+    width: 140px;
+    flex-shrink: 0;
+  }
+
+  .header-right {
+    width: 100px;
+    flex-shrink: 0;
+    gap: 8px;
+  }
+
+  .stat-item {
+    width: auto;
+    min-width: 80px;
+    margin-bottom: 4px;
+  }
+ 
+  .closed-position-title {
+    font-size: 18px;
+}
+
+  .pnl-amount {
+    font-size: 22px;
+  }
+
+  .tab-button {
+    width: 120px;
+    height: 40px;
+  }
+
+  .tab-button p {
+    font-size: 12px;
+  }
+
+  .history-bottom-nav {
+    height: 70px;
+    padding: 8px 15px;
+  }
+
+  .nav-item {
+    width: 50px;
+  }
+
+  .nav-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .nav-text {
+    font-size: 11px;
+  }
+}
+
+/* Hide on desktop and larger screens */
+@media (min-width: 769px) {
+  .history-page-container {
+    display: none !important;
+  }
+}
+
+/* Only show on mobile devices */
+@media (max-width: 768px) {
+  .history-page-container {
+    display: flex !important;
+  }
+}
+
+/* Force hide on desktop regardless of window size */
+@media (hover: hover) and (pointer: fine) {
+  .history-page-container {
+    display: none !important;
+  }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; /* Full screen overlay */
+  background-color: rgba(51, 51, 51, 0.7);
+  backdrop-filter: blur(4.95px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 9998; /* Lower than navigation */
+  padding: 0; /* No padding, modal will slide from behind navigation */
+}
+
+.modal-content {
+  background-color: #11418c;
+  border-radius: 24px; /* Full rounded corners like the design */
+  width: 100%;
+  max-width: 393px;
+  height: auto; /* Auto height to fit content only */
+  min-height: auto; /* No minimum height - only what's needed */
+  max-height: calc(100vh - 87px); /* Don't exceed screen minus navigation */
+  overflow: visible; /* Allow content to be visible */
+  box-shadow: 
+    inset 0 4px 20px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.2);
+  transform: translateY(100%); /* Start from behind navigation */
+  animation: slideUp 0.3s ease-out forwards;
+  margin-bottom: 0; /* No space, directly above navigation */
+  position: relative;
+  bottom: 0; /* Position at bottom, behind navigation */
+  display: flex;
+  flex-direction: column; /* Flex layout for proper content distribution */
+  transition: height 0.2s ease; /* Smooth height transition */
+}
+
+/* Drag Handle */
+.drag-handle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  cursor: grab;
+  display: none; /* Hide the drag handle visually */
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  background-color: transparent;
+  border-radius: 24px 24px 0 0;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.drag-indicator {
+  width: 40px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  margin-top: 8px;
+  transition: background-color 0.2s ease;
+  display: none; /* Hide the drag indicator visually */
+}
+
+.drag-handle:hover .drag-indicator {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.modal-content.closing {
+  animation: slideDown 0.3s ease-in forwards;
+}
+
+.modal-header {
+  background-color: #11418c;
+  padding: 16px 20px 12px;
+  padding-top: 24px; /* Space for drag handle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 60px; /* Reduced header height */
+  border-radius: 24px 24px 0 0; /* Rounded top corners */
+}
+
+.modal-title p {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: white;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.modal-close {
+  cursor: pointer;
+  padding: 8px;
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.modal-close:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.modal-body {
+  background-color: #11418c;
+  padding: 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Perfect spacing between fields */
+  overflow: visible; /* No scrolling, content will scale */
+  flex: 0 0 auto; /* Only take space needed for content */
+  justify-content: flex-start; /* Start from top to ensure all content is visible */
+  border-radius: 0 0 24px 24px; /* Rounded bottom corners */
+  box-shadow: 
+    inset 0 2px 10px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.modal-field {
+  background-color: #e8f0fd;
+  border-radius: 8px; /* Increased border radius */
+  padding: 12px 8px; /* Increased padding for bigger fields */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px; /* Bigger height for better visibility */
+  flex: 0 0 auto; /* Don't grow, just fit content */
+  margin: 2px 0; /* Better spacing between fields */
+  box-shadow: 
+    inset 0 1px 3px rgba(0, 0, 0, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.field-label p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  color: black;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.field-value p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #707070;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.field-value div p {
+  font-size: 10px;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Clickable row styles */
+.clickable-row {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.clickable-row:hover {
+  background-color: #e8e8e8;
+}
+
+.clickable-row:active {
+  background-color: #d8d8d8;
+}
+
+/* Tablet responsive styles */
+@media (max-width: 768px) and (min-width: 481px) {
+  .modal-content {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 24px; /* Full rounded corners for tablet */
+    height: calc(100vh - 75px); /* Adjust for tablet navigation */
+    box-shadow: 
+      3px -1px 50px 2px inset rgba(0, 0, 0, 0.6),
+      0 0 0 1px inset rgba(255, 255, 255, 0.08),
+      0 3px 15px rgba(0, 0, 0, 0.25);
+  }
+  
+  .drag-handle {
+    height: 28px;
+  }
+  
+  .drag-indicator {
+    width: 35px;
+    height: 3px;
+  }
+  
+  .modal-header {
+    padding: 18px 18px 12px;
+    padding-top: 28px; /* Extra space for drag handle */
+    min-height: 65px;
+  }
+  
+  .modal-close {
+    right: 15px;
+    width: 26px;
+    top: 35px;
+    height: 18px;
+    padding: 5px;
+}
+  
+  .modal-title p {
+    font-size: 18px;
+  }
+  
+  .modal-body {
+    padding: 0 18px 16px;
+    gap: 6px;
+  }
+  
+  .modal-field {
+    padding: 8px 8px;
+    border-radius: 8px; /* Consistent border radius for tablet */
+    min-height: 38px;
+  }
+  
+  .field-label p {
+    font-size: 11px;
+  }
+  
+  .field-value p {
+    font-size: 13px;
+  }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 480px) {
+  .modal-overlay {
+    padding: 0; /* No padding, modal slides from behind navigation */
+  }
+  
+  .modal-content {
+    width: 100%;
+    max-width: 100%;
+    height: auto; /* Auto height to fit content only */
+    min-height: auto; /* No minimum height - only what's needed */
+    max-height: calc(100vh - 75px);
+    border-radius: 24px; /* Full rounded corners for mobile */
+    margin-bottom: 0; /* No space, directly above navigation */
+    bottom: 0; /* Position at bottom, behind navigation */
+    box-shadow: 
+      3px -1px 40px 2px inset rgba(0, 0, 0, 0.6),
+      0 0 0 1px inset rgba(255, 255, 255, 0.08),
+      0 2px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .drag-handle {
+    height: 25px;
+  }
+  
+  .drag-indicator {
+    width: 30px;
+    height: 3px;
+  }
+  
+  .modal-header {
+    padding: 16px 15px 10px;
+    padding-top: 25px; /* Extra space for drag handle */
+    justify-content: center;
+    position: relative;
+    min-height: 60px;
+  }
+  
+  .modal-close {
+    right: 15px;
+    width: 26px;
+    top: 35px;
+    height: 18px;
+    padding: 5px;
+}
+  .modal-title p {
+    font-size: 16px;
+    letter-spacing: 0.2px;
+  }
+  
+  .modal-body {
+    padding: 0 15px 16px;
+    gap: 4px; /* Very small gap for mobile */
+    justify-content: flex-start; /* Start from top to ensure all content is visible */
+  }
+  
+  .modal-field {
+    padding: 10px 12px;
+    border-radius: 8px; /* Consistent border radius for mobile */
+    background: #E8F0FD;
+    min-height: 42px;
+  }
+  .field-label p {
+    font-size: 10px;
+  }
+  
+  .field-value p {
+    font-size: 12px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 360px) {
+  .modal-content {
+    height: auto; /* Auto height to fit content only */
+    min-height: auto; /* No minimum height - only what's needed */
+    max-height: calc(100vh - 70px); /* Adjust for smaller navigation */
+    border-radius: 24px; /* Full rounded corners for small mobile */
+  }
+  
+  .modal-header {
+    padding: 14px 12px 8px;
+    min-height: 55px;
+  }
+  
+  .modal-close {
+    right: 15px;
+    width: 26px;
+    top: 35px;
+    height: 18px;
+    padding: 5px;
+}
+  .modal-title p {
+    font-size: 14px;
+    letter-spacing: 0.1px;
+  }
+  
+  .modal-body {
+    padding: 0 12px 12px;
+    gap: 3px; /* Minimal gap for very small screens */
+    justify-content: flex-start; /* Start from top to ensure all content is visible */
+  }
+  
+  .modal-field {
+    padding: 8px 5px; /* Bigger padding for small mobile */
+    border-radius: 8px; /* Consistent border radius for small mobile */
+    min-height: 38px; /* Bigger height for small mobile */
+  }
+  
+  .field-label p {
+    font-size: 9px;
+  }
+  
+  .field-value p {
+    font-size: 11px;
+  }
+}
