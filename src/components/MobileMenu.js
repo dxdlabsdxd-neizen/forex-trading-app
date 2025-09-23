@@ -2,21 +2,28 @@ import React, { useState, useEffect } from 'react'
 import './MobileMenu.css'
 import financeTradeImage from '../in.png'
 import HistoryPage from './HistoryPage'
+import PositionPage from './PositionPage'
 
 const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
   const [activeNavItem, setActiveNavItem] = useState('Market')
   const [showHistoryPage, setShowHistoryPage] = useState(false)
+  const [showPositionPage, setShowPositionPage] = useState(false)
 
   const handleNavClick = (navItem) => {
     setActiveNavItem(navItem)
     if (navItem === 'History') {
       setShowHistoryPage(true)
+      setShowPositionPage(false)
+    } else if (navItem === 'Positions') {
+      setShowPositionPage(true)
+      setShowHistoryPage(false)
     } else if (navItem === 'Deposit') {
       if (onOpenDepositModal) {
         onOpenDepositModal()
       }
     } else {
       setShowHistoryPage(false)
+      setShowPositionPage(false)
     }
     console.log(`Navigating to ${navItem}`)
   }
@@ -31,22 +38,33 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
     setActiveNavItem('Market')
   }
 
-  // Handle window resize to close history page if screen becomes desktop size
+  const handleClosePosition = () => {
+    setShowPositionPage(false)
+    setActiveNavItem('Market')
+  }
+
+  // Handle window resize to close pages if screen becomes desktop size
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768 && showHistoryPage) {
+      if (window.innerWidth > 768 && (showHistoryPage || showPositionPage)) {
         setShowHistoryPage(false)
+        setShowPositionPage(false)
         setActiveNavItem('Market')
       }
     }
 
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
-  }, [showHistoryPage])
+  }, [showHistoryPage, showPositionPage])
 
   // Show History page if active (only on mobile)
   if (showHistoryPage && window.innerWidth <= 768) {
-    return <HistoryPage onClose={handleCloseHistory} />
+    return <HistoryPage onClose={handleCloseHistory} onNavigateToPosition={() => handleNavClick('Positions')} />
+  }
+
+  // Show Position page if active (only on mobile)
+  if (showPositionPage && window.innerWidth <= 768) {
+    return <PositionPage onClose={handleClosePosition} onNavigateToHistory={() => handleNavClick('History')} />
   }
 
   return (

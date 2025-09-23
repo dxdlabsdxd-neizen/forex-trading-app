@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './HistoryPage.css'
 
-const HistoryPage = ({ onClose }) => {
+const HistoryPage = ({ onClose, onNavigateToPosition }) => {
   const [activeTab, setActiveTab] = useState('Transaction')
   const [selectedTrade, setSelectedTrade] = useState(null)
   const [showModal, setShowModal] = useState(false)
@@ -356,7 +356,7 @@ const HistoryPage = ({ onClose }) => {
           <span className="nav-text">Chart</span>
         </div>
         
-        <div className="nav-item" onClick={() => onClose()}>
+        <div className="nav-item" onClick={() => onNavigateToPosition ? onNavigateToPosition() : onClose()}>
           <div className="nav-icon">
             <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0_158_286)">
