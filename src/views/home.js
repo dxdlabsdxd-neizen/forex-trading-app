@@ -2913,7 +2913,19 @@ const Home = (props) => {
               </div>
             </div>
             
-            {/* Market table removed */}
+            {/* Market table */}
+            <table className="search-table">
+              <thead>
+                <tr>
+                  <th>Symbol</th>
+                  <th>Type</th>
+                  <th>Change</th>
+                  <th>Bid</th>
+                  <th>Spread</th>
+                  <th>Ask</th>
+                </tr>
+              </thead>
+              <tbody>
                 <tr>
                   <td>EURJPY</td>
                   <td>Minor</td>
@@ -3106,6 +3118,21 @@ const Home = (props) => {
           currentPage={currentMobilePage}
           onOpenDepositModal={openDepositModal}
         />
+      )}
+
+      {/* Market Page - Show when currentMobilePage is 'Market' */}
+      {currentMobilePage === 'Market' && (
+        <div className="mobile-market-page">
+          <div className="mobile-market-header">
+            <h2>Market</h2>
+            <button onClick={() => setCurrentMobilePage('Menu')} className="back-button">
+              ← Back
+            </button>
+          </div>
+          <div className="mobile-market-content">
+            <p>Market data will be displayed here</p>
+          </div>
+        </div>
       )}
       
     </div>

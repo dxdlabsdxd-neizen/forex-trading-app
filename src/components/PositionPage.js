@@ -316,7 +316,7 @@ const PositionPage = ({ onClose, onNavigateToHistory }) => {
 
       {/* Bottom Navigation */}
       <div className="position-bottom-nav">
-        <div className="nav-item" onClick={() => onClose()}>
+        <div className="nav-item">
           <div className="nav-icon">
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 20L12 8L18 14L24 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -326,7 +326,7 @@ const PositionPage = ({ onClose, onNavigateToHistory }) => {
           <span className="nav-text">Market</span>
         </div>
         
-        <div className="nav-item" onClick={() => onClose()}>
+        <div className="nav-item">
           <div className="nav-icon">
             <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="-0.5" y="0.5" width="5" height="9" transform="matrix(-1 0 0 1 8.66669 15)" stroke="white"/>
