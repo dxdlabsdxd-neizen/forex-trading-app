@@ -14,36 +14,462 @@
   z-index: 9999;
   display: flex;
   flex-direction: column;
+  /* Perfect mobile structure */
+  box-sizing: border-box;
 }
 
-/* Mobile Header */
+/* Mobile Header - Fixed Top Navigation */
 .mobile-header {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   height: 15vh; /* Responsive height */
   min-height: 140px;
   max-height: 160px;
   flex-shrink: 0; /* Don't shrink */
+  z-index: 1000;
 }
 
-/* Mobile Content Area - Dynamic content where modals open */
+
+/* Mobile Content Area - Flexible with Auto Scroll */
 .mobile-content-area {
-  flex: 1; /* Take remaining space */
+  position: fixed;
+  top: 20vh; /* Start after header + user info + gap */
+  left: 0;
+  right: 0;
+  bottom: 11vh; /* End before bottom navigation */
+  width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   background-color: #ffffff;
+  /* Hide scrollbar but keep scrolling functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  /* Enable smooth scrolling */
+  -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+  scroll-behavior: smooth;
+  z-index: 100;
 }
 
-/* Mobile Modal Content */
+/* Full screen for History and Position pages */
+.mobile-content-area.full-screen {
+  top: 0;
+  bottom: 0;
+}
+
+.mobile-content-area::-webkit-scrollbar {
+  display: none; /* WebKit browsers (Chrome, Safari, Edge) */
+}
+
+/* Mobile Modal Content - Responsive for all devices */
 .mobile-modal-content {
-  padding: 20px;
-  height: 100%;
+  padding: 2vh 3vw;
+  min-height: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   font-size: 18px;
   color: #333;
   background-color: #f8f9fa;
+  box-sizing: border-box;
+  /* Allow scrolling for long content */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Consistent spacing for all devices to prevent breakdown */
+@media (max-width: 480px) {
+  .mobile-modal-content {
+    align-items: flex-start;
+    padding-top: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .mobile-modal-content {
+    align-items: flex-start;
+    padding-top: 20px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (min-width: 481px) {
+  .mobile-modal-content {
+    align-items: center;
+    padding-top: 30px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* Clean center alignment like menu page */
+
+.mobile-modal-content::-webkit-scrollbar {
+  display: none; /* WebKit browsers (Chrome, Safari, Edge) */
+}
+
+/* Account Verification Modal - Responsive for all devices */
+.mobile-modal-content .account-verification-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 350px;
+  padding: 0;
+  margin: 0 auto;
+  position: relative;
+  /* Content should fit like menu page */
+  overflow: visible;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+/* Consistent modal sizing for all devices */
+@media (max-width: 480px) {
+  .mobile-modal-content .account-verification-container {
+    max-width: 448px;
+    margin-top: 15px;
+}
+}
+
+@media (max-width: 360px) {
+  .mobile-modal-content .account-verification-container {
+    max-width: 448px;
+    margin-top: 15px;
+}
+}
+
+@media (min-width: 481px) {
+  .mobile-modal-content .account-verification-container {
+    max-width: 448px;
+    margin-top: 15px;
+}
+}
+
+.mobile-modal-content .account-verification-container::-webkit-scrollbar {
+  display: none; /* WebKit browsers (Chrome, Safari, Edge) */
+}
+
+/* Help Desk Modal - Same as Account Verification */
+.mobile-modal-content .help-desk-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px;
+  padding: 0;
+  margin: 0 auto;
+  position: relative;
+  /* Content should fit like menu page */
+  overflow: visible;
+}
+
+/* Help Desk Tab Container */
+.mobile-modal-content .help-desk-tab-container {
+  padding: 0 20px;
+  margin-bottom: 0;
+  background-color: rgba(221, 233, 252, 1);
+}
+
+.mobile-modal-content .help-desk-tab-button {
+  padding: 12px 0;
+  font-size: 14px;
+  color: #1D6CE9;
+  font-weight: 500;
+  background-color: rgba(221, 233, 252, 1);
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.mobile-modal-content .help-desk-tab-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 2px;
+  background-color: #1D6CE9;
+}
+
+/* Help Desk Content */
+.mobile-modal-content .help-desk-content {
+  padding: 20px;
+  background-color: rgba(221, 233, 252, 1);
+}
+
+.mobile-modal-content .help-desk-section-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.mobile-modal-content .help-desk-section-subtitle {
+  font-size: clamp(12px, 3vw, 14px);
+  color: #949494;
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 1.3;
+  padding: 0 10px;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Help Desk Contact Info Box */
+.mobile-modal-content .help-desk-contact-info-box {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-modal-content .help-desk-contact-icon {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(29, 108, 233, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.mobile-modal-content .help-desk-contact-details {
+  flex: 1;
+}
+
+.mobile-modal-content .help-desk-contact-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #1D6CE9;
+  margin-bottom: 4px;
+}
+
+.mobile-modal-content .help-desk-contact-email {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.mobile-modal-content .help-desk-contact-status {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Help Desk Form */
+.mobile-modal-content .help-desk-form {
+  margin-bottom: 20px;
+}
+
+.mobile-modal-content .help-desk-form-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.mobile-modal-content .help-desk-form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mobile-modal-content .help-desk-full-width {
+  flex: 1;
+  margin-bottom: 15px;
+}
+
+.mobile-modal-content .help-desk-form-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.mobile-modal-content .help-desk-form-input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  color: #333;
+}
+
+.mobile-modal-content .help-desk-form-input::placeholder {
+  color: #999;
+  font-size: 14px;
+  opacity: 1;
+}
+
+.mobile-modal-content .help-desk-form-textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  color: #333;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.mobile-modal-content .help-desk-form-textarea::placeholder {
+  color: #999;
+  font-size: 14px;
+  opacity: 1;
+}
+
+.mobile-modal-content .help-desk-send-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #1D6CE9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.mobile-modal-content .help-desk-send-button:hover {
+  background-color: #1557b0;
+}
+
+/* Responsive Help Desk Modal */
+@media (max-width: 480px) {
+  .mobile-modal-content .help-desk-container {
+    max-width: 420px;
+    margin-top: 15px;
+}
+}
+
+@media (max-width: 360px) {
+  .mobile-modal-content .help-desk-container {
+    max-width: 420px;
+    margin-top: 12px;
+  }
+}
+
+@media (min-width: 481px) {
+  .mobile-modal-content .help-desk-container {
+    max-width: 420px;
+    margin-top: 20px;
+  }
+}
+
+/* Header styles removed - no header in modal */
+
+.mobile-modal-content .nav-tabs {
+  padding: 0 20px;
+  border-bottom: 1px solid #e9ecef;
+  margin-bottom: 0;
+  background-color: rgba(221, 233, 252, 1);
+}
+
+.mobile-modal-content .nav-tabs .tab {
+  padding: 12px 0;
+  font-size: 14px;
+  color: #1D6CE9;
+  border-bottom: 2px solid #1D6CE9;
+  font-weight: 500;
+  background-color: rgba(221, 233, 252, 1);
+}
+
+.mobile-modal-content .account-verification-content {
+  padding: 20px;
+  background-color: rgba(221, 233, 252, 1);
+}
+
+.mobile-modal-content .profile-icon-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mobile-modal-content .profile-icon {
+  width: 70px;
+  height: 70px;
+  background-color: #E3F2FD;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #1D6CE9;
+  margin-bottom: 6px;
+}
+
+.mobile-modal-content .profile-icon svg {
+  width: 40px;
+  height: 40px;
+}
+
+.mobile-modal-content .form-group {
+  margin-bottom: 18px;
+}
+
+.mobile-modal-content .form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1E1E1E;
+}
+
+.mobile-modal-content .form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.mobile-modal-content .form-control:focus {
+  outline: none;
+  border-color: #1D6CE9;
+  box-shadow: 0 0 0 2px rgba(29, 108, 233, 0.1);
+}
+
+.mobile-modal-content .form-group.inline-fields {
+  display: flex;
+  gap: 12px;
+}
+
+.mobile-modal-content .form-group.inline-fields > div {
+  flex: 1;
+}
+
+.mobile-modal-content .btn-upload {
+  width: 100%;
+  background-color: #1D6CE9;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 20px;
+  margin-bottom: 16px;
+}
+
+.mobile-modal-content .btn-upload:hover {
+  background-color: #1557b0;
 }
 
 .mobile-header-bg {
@@ -120,17 +546,22 @@
   margin-top: 4px;
 }
 
-/* User Info */
+/* User Info - Fixed Position */
 .mobile-user-info {
-  position: absolute;
-  top: 18vh;
+  position: fixed;
+  top: 15vh; /* Right after header */
   left: 3vw;
   right: 3vw;
   display: flex;
   justify-content: center;
   padding: 1vh 0;
-  z-index: 10;
+  z-index: 1001;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e9ecef;
+  height: auto;
+  min-height: 4vh;
 }
+
 
 .mobile-user-text {
   font-family: 'Public Sans', sans-serif;
@@ -143,23 +574,33 @@
   overflow: visible;
 }
 
-/* Menu Content */
+/* Fixed Gap Space after User Info */
+.mobile-gap-space {
+  position: fixed;
+  top: 19vh; /* Right after user info */
+  left: 0;
+  right: 0;
+  height: 1vh; /* Fixed gap height */
+  background-color: #ffffff;
+  z-index: 1000;
+}
+
+/* Menu Content - Scrollable in Content Area */
 .mobile-menu-content {
   background-color: #dde9fc;
-  position: absolute;
-  top: 50%;
+  position: relative;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: 2vh;
+  transform: translateX(-50%);
+  margin: 2vh 0;
   border-radius: 12px;
   padding: 2vh 3vw 1.5vh 3vw;
   width: 94vw;
-  height: 60vh;
-  height: 60dvh;
+  min-height: calc(100vh - 30vh); /* Adjust based on header and bottom nav */
   display: flex;
   flex-direction: column;
   gap: 1vh;
-  overflow: hidden;
+  overflow: visible;
   justify-content: space-between;
   align-items: stretch;
   box-sizing: border-box;
@@ -169,11 +610,11 @@
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translate(-50%, -60%);
+    transform: translateX(-50%) translateY(-60%);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%) translateY(0);
   }
 }
 
@@ -405,7 +846,7 @@
   display: block;
 }
 
-/* Bottom Navigation */
+/* Bottom Navigation - Fixed Position */
 .mobile-bottom-nav {
   position: fixed;
   bottom: 0;
@@ -420,7 +861,7 @@
   justify-content: space-between;
   padding: 1.5vh 6vw;
   border-radius: 24px 24px 0 0;
-  z-index: 100;
+  z-index: 1002;
   box-sizing: border-box;
 }
 
@@ -525,16 +966,15 @@
   }
   
   .mobile-menu-content {
-    position: absolute;
-    top: 50%;
+    position: relative;
+    top: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 4.5vh;
-    width: 95vw;
-    height: 60vh;
-    height: 62dvh;
-    padding: 2.2vh 3vw 4.8vh 3vw;
-    gap: 1.2vh;
+    transform: translateX(-50%);
+    margin: 2vh 0;
+    width: 94vw;
+    min-height: calc(100vh - 30vh);
+    padding: 2vh 3vw 1.5vh 3vw;
+    gap: 1vh;
 }
   .mobile-menu-item {
     height: 5vh;
@@ -570,16 +1010,15 @@
   }
   
   .mobile-menu-content {
-    position: absolute;
-    top: 50%;
+    position: relative;
+    top: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 4.5vh;
-    width: 95vw;
-    height: 60vh;
-    height: 62dvh;
-    padding: 2.2vh 3vw 4.8vh 3vw;
-    gap: 1.2vh;
+    transform: translateX(-50%);
+    margin: 2vh 0;
+    width: 94vw;
+    min-height: calc(100vh - 30vh);
+    padding: 2vh 3vw 1.5vh 3vw;
+    gap: 1vh;
 } 
   .mobile-menu-item {
     height: 5.5vh;

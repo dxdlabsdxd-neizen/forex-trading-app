@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './MobileMenu.css'
+import '../views/home.css'
 import financeTradeImage from '../in.png'
 import HistoryPage from './HistoryPage'
 import PositionPage from './PositionPage'
@@ -8,6 +9,12 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
   const [activeNavItem, setActiveNavItem] = useState('Market')
   const [currentModal, setCurrentModal] = useState(null) // null, 'History', 'Positions', 'AccountInfo', etc.
   const [showMenuContainer, setShowMenuContainer] = useState(false)
+  const [helpDeskForm, setHelpDeskForm] = useState({
+    fullName: '',
+    email: '',
+    subject: '',
+    message: ''
+  })
 
   const handleNavClick = (navItem) => {
     setActiveNavItem(navItem)
@@ -21,10 +28,25 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
       if (onOpenDepositModal) {
         onOpenDepositModal()
       }
+    } else if (navItem === 'Help Desk') {
+      setCurrentModal('HelpDesk')
     } else {
       setCurrentModal(null)
     }
     console.log(`Navigating to ${navItem}`)
+  }
+
+  // Help Desk Form Functions
+  const handleHelpDeskFormChange = (field, value) => {
+    setHelpDeskForm(prev => ({
+      ...prev,
+      [field]: value
+    }))
+  }
+
+  const handleHelpDeskSubmit = () => {
+    console.log('Help desk form submitted:', helpDeskForm)
+    setCurrentModal(null)
   }
 
   const handleMenuClick = () => {
@@ -75,7 +97,53 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
       case 'Positions':
         return <PositionPage onClose={handleCloseModal} onNavigateToHistory={() => handleNavClick('History')} />
       case 'AccountInfo':
-        return <div className="mobile-modal-content">Account Information Modal - Coming Soon</div>
+        return (
+          <div className="mobile-modal-content">
+            <div className="account-verification-container">
+              <div className="nav-tabs">
+                <div className="tab active">Personal Information</div>
+              </div>
+              
+              <div className="account-verification-content">
+                <div className="profile-icon-container">
+                  <div className="profile-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                  </div>
+                </div>
+                
+                <div className="form-group inline-fields">
+                  <div>
+                    <label htmlFor="firstName">First Name</label>
+                    <input type="text" id="firstName" className="form-control" placeholder="Emma Brown" />
+                  </div>
+                  <div>
+                    <label htmlFor="lastName">Last Name</label>
+                    <input type="text" id="lastName" className="form-control" placeholder="Emma Brown" />
+                  </div>
+                </div>
+                
+                <div className="form-group">
+                  <label htmlFor="email">E-mail Address</label>
+                  <input type="email" id="email" className="form-control" placeholder="edgetrade@gmail.com" />
+                </div>
+                
+                <div className="form-group">
+                  <label htmlFor="idNumber">ID Number</label>
+                  <input type="text" id="idNumber" className="form-control" placeholder="0218704976265" />
+                </div>
+                
+                <div className="form-group">
+                  <label htmlFor="dob">Date of Birth</label>
+                  <input type="text" id="dob" className="form-control" placeholder="dd/mm/yyyy" />
+                </div>
+                
+                <button className="btn-upload">Upload Documents</button>
+              </div>
+            </div>
+          </div>
+        )
       case 'Withdrawal':
         return <div className="mobile-modal-content">Withdrawal Modal - Coming Soon</div>
       case 'Deposit':
@@ -83,7 +151,86 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
       case 'TradeTransaction':
         return <div className="mobile-modal-content">Trade & Transaction Modal - Coming Soon</div>
       case 'HelpDesk':
-        return <div className="mobile-modal-content">Help Desk Modal - Coming Soon</div>
+        return (
+          <div className="mobile-modal-content">
+            <div className="help-desk-container">
+              <div className="help-desk-tab-container">
+                <button className="help-desk-tab-button active">Contact Now</button>
+              </div>
+              
+              <div className="help-desk-content">
+                <h2 className="help-desk-section-title">Get in Touch</h2>
+                <p className="help-desk-section-subtitle">We're here to help with any questions you might have</p>
+
+                <div className="help-desk-contact-info-box">
+                  <div className="help-desk-contact-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path d="M14.25 6C13.625 6 13.0938 5.78125 12.6562 5.34375C12.2188 4.90625 12 4.375 12 3.75C12 3.125 12.2188 2.59375 12.6562 2.15625C13.0938 1.71875 13.625 1.5 14.25 1.5C14.875 1.5 15.4062 1.71875 15.8438 2.15625C16.2812 2.59375 16.5 3.125 16.5 3.75C16.5 4.375 16.2812 4.90625 15.8438 5.34375C15.4062 5.78125 14.875 6 14.25 6ZM3 15C2.5875 15 2.23438 14.8531 1.94063 14.5594C1.64688 14.2656 1.5 13.9125 1.5 13.5V4.5C1.5 4.0875 1.64688 3.73438 1.94063 3.44063C2.23438 3.14688 2.5875 3 3 3H10.575C10.525 3.25 10.5 3.5 10.5 3.75C10.5 4 10.525 4.25 10.575 4.5C10.6625 4.9 10.8063 5.27188 11.0063 5.61563C11.2063 5.95938 11.45 6.2625 11.7375 6.525L9 8.25L3 4.5V6L9 9.75L12.9563 7.275C13.1688 7.35 13.3813 7.40625 13.5938 7.44375C13.8062 7.48125 14.025 7.5 14.25 7.5C14.65 7.5 15.0438 7.4375 15.4313 7.3125C15.8188 7.1875 16.175 7 16.5 6.75V13.5C16.5 13.9125 16.3531 14.2656 16.0594 14.5594C15.7656 14.8531 15.4125 15 15 15H3Z" fill="#1D6CE9"/>
+                    </svg>
+                  </div>
+                  <div className="help-desk-contact-details">
+                    <div className="help-desk-contact-label">Email Support</div>
+                    <div className="help-desk-contact-email">support@forex.com</div>
+                    <div className="help-desk-contact-status">Available 24/5</div>
+                  </div>
+                </div>
+
+                <div className="help-desk-form">
+                  <div className="help-desk-form-row">
+                    <div className="help-desk-form-group">
+                      <label htmlFor="helpDeskFullName" className="help-desk-form-label">Fast Name</label>
+                      <input 
+                        type="text" 
+                        id="helpDeskFullName" 
+                        className="help-desk-form-input" 
+                        placeholder="Emma Brown"
+                        value={helpDeskForm.fullName}
+                        onChange={(e) => handleHelpDeskFormChange('fullName', e.target.value)}
+                      />
+                    </div>
+                    <div className="help-desk-form-group">
+                      <label htmlFor="helpDeskEmail" className="help-desk-form-label">Last Name</label>
+                      <input 
+                        type="text" 
+                        id="helpDeskEmail" 
+                        className="help-desk-form-input" 
+                        placeholder="Emma Brown"
+                        value={helpDeskForm.email}
+                        onChange={(e) => handleHelpDeskFormChange('email', e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="help-desk-form-group help-desk-full-width" style={{marginBottom: '1rem'}}>
+                    <label htmlFor="helpDeskSubject" className="help-desk-form-label">E-mail Address</label>
+                    <input 
+                      type="email" 
+                      id="helpDeskSubject" 
+                      className="help-desk-form-input"
+                      placeholder="edgetrade@gmail.com"
+                      value={helpDeskForm.subject}
+                      onChange={(e) => handleHelpDeskFormChange('subject', e.target.value)}
+                    />
+                  </div>
+
+                  <div className="help-desk-form-group help-desk-full-width">
+                    <label htmlFor="helpDeskMessage" className="help-desk-form-label">Message</label>
+                    <textarea 
+                      id="helpDeskMessage" 
+                      className="help-desk-form-textarea"
+                      placeholder=""
+                      value={helpDeskForm.message}
+                      onChange={(e) => handleHelpDeskFormChange('message', e.target.value)}
+                    ></textarea>
+                  </div>
+                </div>
+                <button className="help-desk-send-button" onClick={handleHelpDeskSubmit}>
+                  Send Message
+                </button>
+              </div>
+            </div>
+          </div>
+        )
       default:
         return null
     }
@@ -91,12 +238,13 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
 
   return (
     <div className="mobile-menu-container">
-      {/* Fixed Top Navigation */}
-      <div className="mobile-header">
-        <div className="mobile-header-bg"></div>
-        
-        {/* Main Menu Buttons */}
-        <div className="mobile-main-buttons">
+      {/* Fixed Top Navigation - Hide for History and Position pages */}
+      {currentModal !== 'History' && currentModal !== 'Positions' && (
+        <div className="mobile-header">
+          <div className="mobile-header-bg"></div>
+          
+          {/* Main Menu Buttons */}
+          <div className="mobile-main-buttons">
           <div className="mobile-button-group">
             <div className="mobile-menu-btn active" onClick={handleMenuClick}>
               <div className="mobile-btn-icon">
@@ -127,18 +275,24 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
           </div>
         </div>
         
-        {/* User Info */}
-        <div className="mobile-user-info">
-          <span className="mobile-user-text">EMMA BROWN 90993789 - USD</span>
+          {/* User Info */}
+          <div className="mobile-user-info">
+            <span className="mobile-user-text">EMMA BROWN 90993789 - USD</span>
+          </div>
+          
+          {/* Fixed Gap Space */}
+          <div className="mobile-gap-space"></div>
         </div>
-      </div>
+      )}
 
       {/* Dynamic Content Area - Where all modals will open */}
-      <div className="mobile-content-area">
+      <div className={`mobile-content-area ${currentModal === 'History' || currentModal === 'Positions' ? 'full-screen' : ''}`}>
+       
         {currentModal ? (
           renderModalContent()
         ) : showMenuContainer ? (
           // Default menu content when menu is opened
+          
           <div className="mobile-menu-content">
             <div className="mobile-menu-items">
               <button className="mobile-menu-item" onClick={() => handleMenuItemClick('Account Information')}>
