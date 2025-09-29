@@ -116,14 +116,13 @@
   background-color: #dde9fc;
   border-radius: 12px;
   padding: 16px;
-  height: 71px;
+  height: 80px;
   display: flex;
   flex-direction: column;
   gap: 8px;
   align-items: center;
   justify-content: center;
 }
-
 .category-row {
   display: flex;
   gap: 10px;
@@ -135,9 +134,9 @@
   background-color: white;
   border: none;
   border-radius: 30px;
-  padding: 10px;
-  height: 20px;
-  width: 93px;
+  padding: 8px;
+  height: 31px;
+  width: 101px;
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -383,6 +382,14 @@
     gap: 12px;
   }
 
+  @media (max-width: 480px) {
+    .modal-body {
+      padding: 0 0px 0px;
+      gap: 4px;
+      justify-content: flex-start;
+    }
+  }
+
   .modal-field {
     width: 100%;
   }
@@ -508,10 +515,9 @@
   }
   
   .category-button {
-    width: 80px;
+    width: 101px;
     font-size: 12px;
-  }
-  
+}
   .equity-value {
     font-size: 32px;
   }
