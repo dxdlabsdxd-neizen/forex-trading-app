@@ -479,7 +479,6 @@
   max-height: 130px;
   width: 100%;
   border-radius: 0 0 12px 12px;
-  box-shadow: 0px 4px 36.1px 9px rgba(0, 0, 0, 0.25) inset;
   position: absolute;
   top: 0;
   left: 0;
@@ -514,13 +513,16 @@
   align-items: center;
   gap: 2px;
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
 .mobile-menu-btn.active .mobile-btn-icon {
   background-color: #1d6ce9;
   border-radius: 12px;
   padding: 10px;
+}
+
+.mobile-menu-btn.active {
+  background-color: transparent;
 }
 
 .mobile-btn-icon {
@@ -534,7 +536,6 @@
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  transition: all 0.2s ease;
 }
 
 .mobile-btn-text {
@@ -846,79 +847,87 @@
   display: block;
 }
 
-/* Bottom Navigation - Fixed Position */
-.mobile-bottom-nav {
+/* Figma Bottom Navigation - Exact Match */
+.figma-bottom-nav {
+  background-color: #1d6ce9;
+  box-sizing: border-box;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 24px 12px;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(180deg, #1d6ce9 0%, #103d83 100%);
-  height: 11vh;
-  min-height: 75px;
-  max-height: 95px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: 1.5vh 6vw;
   border-radius: 24px 24px 0 0;
   z-index: 1002;
-  box-sizing: border-box;
-}
-
-.mobile-nav-item {
   display: flex;
+  width: 100%;
+}
+
+.figma-nav-item {
   flex-direction: column;
-  align-items: center;
   gap: 6px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  width: 70px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  flex: 1;
+  display: flex;
 }
 
-.mobile-nav-item:hover {
-  transform: translateY(-2px);
-}
-
-.mobile-nav-item.active {
-  transform: translateY(-2px);
-}
-
-.mobile-nav-item.active .mobile-nav-icon {
-  background-color: rgba(255, 255, 255, 0.2);
+.figma-nav-item.active .figma-nav-icon-container {
+  background-color: white;
   border-radius: 12px;
+  padding: 9px;
 }
 
-.mobile-nav-icon {
-  width: 12vw;
-  height: 12vw;
-  min-width: 40px;
-  min-height: 40px;
-  max-width: 55px;
-  max-height: 55px;
+.figma-nav-icon-container {
+  gap: 10px;
+  align-items: center;
+  padding: 9px;
+  position: relative;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.figma-nav-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.mobile-chart-bars {
+.figma-nav-text {
+  text-transform: capitalize;
   display: flex;
-  align-items: end;
-  gap: 2px;
-  height: 22px;
-}
-
-.mobile-bar {
-  width: 6px;
-  background-color: white;
-  border-radius: 1px;
-}
-
-.mobile-nav-text {
+  flex-direction: column;
   font-family: 'Public Sans', sans-serif;
   font-weight: 600;
-  font-size: clamp(12px, 3.5vw, 16px);
+  height: 16px;
+  justify-content: center;
+  line-height: 0;
+  position: relative;
+  flex-shrink: 0;
+  font-size: 14px;
+  text-align: center;
   color: white;
-  text-transform: capitalize;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.figma-nav-text p {
+  line-height: normal;
+  margin: 0;
 }
 
 /* Mobile-only media queries */
