@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import './MarketPage.css';
 
 // Image assets - these would be replaced with actual asset paths
-const imgAselsIs1D4485091 = "http://localhost:3845/assets/92aadc545bd518b68196e7d879401d4fa1dfae7b.png";
-const imgGaranIs3226785E1 = "http://localhost:3845/assets/cebe645d07b99d790a04482ef376b366dafd1907.png";
-const imgMenuIcon = "http://localhost:3845/assets/3da6bd4f31e69583960a92c0e378f505b751d10f.svg";
-const imgDepositIcon = "http://localhost:3845/assets/deda2cb68a1bd5d76a38b5a8a019037578de80a2.svg";
-const imgTradeIcon = "http://localhost:3845/assets/4cbf82e5cdac05792f3c6175c0f4647a4c1961b8.svg";
-const imgSearch = "http://localhost:3845/assets/511be64755d661db401466df596c7d09c11b466e.svg";
-const imgSpotAudusdLogoDeff1 = "http://localhost:3845/assets/08974826bab4d8ed6a7dad2121d51456d6024bfa.svg";
-const imgMarketIcon = "http://localhost:3845/assets/e7ece5bbf76341d43aba40689c9539b7724ebf92.svg";
-const imgLayer1 = "http://localhost:3845/assets/52fb4289adb6b835833f0fb6bd0010c7178edd1c.svg";
-const imgHistoryIcon = "http://localhost:3845/assets/f290727ef8958edf76d89af0bfa73ec6ade9cc63.svg";
+const imgAselsIs1D4485091 = "/svg/ellipse54526-u4gp-200h.png";
+const imgGaranIs3226785E1 = "/svg/ellipse54527-a74m-200h.png";
+const imgMenuIcon = "/external/frame101534-kup9.svg";
+const imgDepositIcon = "/external/frame111535-a3bh.svg";
+const imgTradeIcon = "/external/frame121536-klyr.svg";
+const imgSearch = "/external/search1526-kx1o.svg";
+const imgSpotAudusdLogoDeff1 = "/svg/ellipse54526-u4gp-200h.png";
+const imgMarketIcon = "/external/dashboardicon1125-mcf2.svg";
+const imgLayer1 = "/external/frame121563-1ama.svg";
+const imgHistoryIcon = "/external/frame121569-nf45.svg";
 
 const MarketPage = ({ onNavigateToHistory, onNavigateToPositions, onNavigateToChart, onNavigateToMenu, onNavigateToDeposit, onNavigateToTrade }) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
