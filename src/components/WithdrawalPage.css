@@ -414,15 +414,8 @@
   gap: 8px;
 }
 
-/* Important Notes Section */
-.withdrawal-important-notes {
-  background-color: #FFF9E6;
-  border-left: 3px solid #FFD700;
-  padding: 12px 14px;
-  border-radius: 4px;
-}
-
-.withdrawal-notes-header {
+/* Mobile Important Notes Dropdown Enhancement */
+.withdrawal-page-container .withdrawal-important-notes .withdrawal-notes-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -430,38 +423,21 @@
   user-select: none;
 }
 
-.withdrawal-notes-title {
-  font-size: 13px;
-  font-weight: 700;
-  color: #D4A017;
+.withdrawal-page-container .withdrawal-important-notes .withdrawal-notes-title {
   margin: 0;
-  font-family: Arial, sans-serif;
 }
 
-.withdrawal-notes-toggle-arrow {
+.withdrawal-page-container .withdrawal-important-notes .withdrawal-notes-toggle-arrow {
   transition: transform 0.3s ease;
   flex-shrink: 0;
 }
 
-.withdrawal-notes-toggle-arrow.expanded {
+.withdrawal-page-container .withdrawal-important-notes .withdrawal-notes-toggle-arrow.expanded {
   transform: rotate(180deg);
 }
 
-.withdrawal-notes-list {
-  margin: 10px 0 0 0;
-  padding-left: 18px;
-  font-size: 11px;
-  color: #666;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-}
-
-.withdrawal-notes-list li {
-  margin-bottom: 4px;
-}
-
-.withdrawal-notes-list li:last-child {
-  margin-bottom: 0;
+.withdrawal-page-container .withdrawal-important-notes .withdrawal-notes-list {
+  margin-top: 10px;
 }
 
 .withdrawal-sub-input-group {

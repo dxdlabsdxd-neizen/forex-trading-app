@@ -349,135 +349,12 @@
   margin-bottom: 20px;
 }
 
-/* Page 2 & 3 Styles - From Web Version */
-.deposit-content {
-  padding: 12px;
-}
+/* Page 2 & 3 Styles - Mobile specific only */
+/* Web version classes (.important-notes, .form-group, .info-header, etc.) are already in home.css */
+/* We only add mobile-specific enhancements here */
 
-.deposit-content h3 {
-  font-size: 12px;
-  font-weight: 600;
-  color: #333;
-  margin: 0 0 4px 0;
-  font-family: Arial, sans-serif;
-}
-
-.deposit-content p {
-  font-size: 10px;
-  color: #666;
-  margin: 0 0 8px 0;
-  font-family: Arial, sans-serif;
-}
-
-.info-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.back-icon-box {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  margin-right: 8px;
-}
-
-.text-block {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.text-block h2 {
-  font-size: 14px;
-  color: #333;
-  margin: 0;
-  font-weight: 700;
-  font-family: Arial, sans-serif;
-}
-
-.text-block p {
-  color: #777;
-  margin: 0;
-  line-height: 1.2;
-  font-size: 9px;
-  font-family: 'Inter', sans-serif;
-}
-
-.bank-details {
-  background-color: #EFEFEF;
-  padding: 16px;
-  border-radius: 8px;
-  margin-bottom: 12px;
-}
-
-.bank-detail-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
-  gap: 8px;
-}
-
-.bank-detail-row:last-child {
-  border-bottom: none;
-}
-
-.bank-label {
-  color: #555;
-  flex-basis: 35%;
-  font-size: 10px;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
-}
-
-.bank-value {
-  color: #333;
-  font-weight: bold;
-  flex-basis: 60%;
-  text-align: right;
-  font-size: 10px;
-  font-family: 'Inter', sans-serif;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
-}
-
-.bank-value.crypto-value {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.crypto-icon-inline {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.copy-icon-box {
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2px;
-}
-
-.important-notes {
-  background-color: #fff7ca;
-  border-radius: 8px;
-  padding: 15px;
-  margin-top: 12px;
-  margin-bottom: 12px;
-}
-
-.notes-header {
+/* Mobile Important Notes Dropdown Enhancement */
+.deposit-page-container .important-notes .notes-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -485,57 +362,13 @@
   user-select: none;
 }
 
-.important-notes h4 {
-  font-weight: bold;
-  color: #8a6d3b;
-  margin: 0;
-  font-size: 12px;
-  font-family: 'Inter', sans-serif;
-}
-
-.notes-toggle-arrow {
+.deposit-page-container .important-notes .notes-toggle-arrow {
   transition: transform 0.3s ease;
   flex-shrink: 0;
 }
 
-.notes-toggle-arrow.expanded {
+.deposit-page-container .important-notes .notes-toggle-arrow.expanded {
   transform: rotate(180deg);
-}
-
-.important-notes ul {
-  list-style-type: disc;
-  padding-left: 20px;
-  margin: 10px 0 0 0;
-  color: #666;
-}
-
-.important-notes li {
-  margin-bottom: 5px;
-  line-height: 1.4;
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-}
-
-.deposit-approve-btn {
-  width: 100%;
-  padding: 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-family: 'Inter', sans-serif;
-}
-
-.deposit-approve-btn:hover {
-  background-color: #357bd8;
-}
-
-.button-container {
-  padding: 12px;
 }
 
 /* Crypto Form Fields */
