@@ -29,10 +29,8 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
     } else if (navItem === 'Market') {
       setCurrentModal('Market')
     } else if (navItem === 'Deposit') {
-      setActiveTopNavItem('Deposit') // Set top nav active state
-      if (onOpenDepositModal) {
-        onOpenDepositModal()
-      }
+      setActiveTopNavItem('Deposit')
+      setCurrentModal('Deposit')
     } else if (navItem === 'Help Desk') {
       setCurrentModal('HelpDesk')
     } else {
