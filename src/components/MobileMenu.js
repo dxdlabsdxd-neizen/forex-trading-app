@@ -5,6 +5,8 @@ import financeTradeImage from '../in.png'
 import HistoryPage from './HistoryPage'
 import PositionPage from './PositionPage'
 import MarketPage from './MarketPage'
+import WithdrawalPage from './WithdrawalPage'
+import DepositPage from './DepositPage'
 
 const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
   const [activeNavItem, setActiveNavItem] = useState('Market')
@@ -164,9 +166,27 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
           </div>
         )
       case 'Withdrawal':
-        return <div className="mobile-modal-content">Withdrawal Modal - Coming Soon</div>
+        return <WithdrawalPage 
+          onClose={handleCloseModal}
+          onNavigateToMenu={() => setCurrentModal(null)}
+          onNavigateToDeposit={() => setCurrentModal('Deposit')}
+          onNavigateToTrade={() => console.log('Trade clicked')}
+          onNavigateToMarket={() => handleNavClick('Market')}
+          onNavigateToChart={() => handleNavClick('Chart')}
+          onNavigateToPositions={() => handleNavClick('Positions')}
+          onNavigateToHistory={() => handleNavClick('History')}
+        />
       case 'Deposit':
-        return <div className="mobile-modal-content">Deposit Modal - Coming Soon</div>
+        return <DepositPage 
+          onClose={handleCloseModal}
+          onNavigateToMenu={() => setCurrentModal(null)}
+          onNavigateToWithdrawal={() => setCurrentModal('Withdrawal')}
+          onNavigateToTrade={() => console.log('Trade clicked')}
+          onNavigateToMarket={() => handleNavClick('Market')}
+          onNavigateToChart={() => handleNavClick('Chart')}
+          onNavigateToPositions={() => handleNavClick('Positions')}
+          onNavigateToHistory={() => handleNavClick('History')}
+        />
       case 'TradeTransaction':
         return <div className="mobile-modal-content">Trade & Transaction Modal - Coming Soon</div>
       case 'HelpDesk':
@@ -257,8 +277,8 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
 
   return (
     <div className="mobile-menu-container">
-      {/* Fixed Top Navigation - Hide for History, Position and Market pages */}
-      {currentModal !== 'History' && currentModal !== 'Positions' && currentModal !== 'Market' && (
+      {/* Fixed Top Navigation - Hide for History, Position, Market, Withdrawal and Deposit pages */}
+      {currentModal !== 'History' && currentModal !== 'Positions' && currentModal !== 'Market' && currentModal !== 'Withdrawal' && currentModal !== 'Deposit' && (
         <div className="mobile-header">
           <div className="mobile-header-bg"></div>
           
@@ -305,7 +325,7 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
       )}
 
       {/* Dynamic Content Area - Where all modals will open */}
-      <div className={`mobile-content-area ${currentModal === 'History' || currentModal === 'Positions' || currentModal === 'Market' ? 'full-screen' : ''}`}>
+      <div className={`mobile-content-area ${currentModal === 'History' || currentModal === 'Positions' || currentModal === 'Market' || currentModal === 'Withdrawal' || currentModal === 'Deposit' ? 'full-screen' : ''}`}>
        
         {currentModal && currentModal !== 'Menu' ? (
           renderModalContent()
@@ -382,8 +402,8 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
         ) : null}
       </div>
 
-      {/* Fixed Bottom Navigation - Hide for Market page */}
-      {currentModal !== 'Market' && (
+      {/* Fixed Bottom Navigation - Hide for Market, Withdrawal and Deposit pages */}
+      {currentModal !== 'Market' && currentModal !== 'Withdrawal' && currentModal !== 'Deposit' && (
       <div className="figma-bottom-nav">
         <div className={`figma-nav-item ${activeNavItem === 'Market' ? 'active' : ''}`} onClick={() => handleNavClick('Market')}>
           <div className="figma-nav-icon-container">

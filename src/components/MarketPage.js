@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
 import './MarketPage.css';
 
-// Image assets - these would be replaced with actual asset paths
-const imgAselsIs1D4485091 = "/svg/ellipse54526-u4gp-200h.png";
-const imgGaranIs3226785E1 = "/svg/ellipse54527-a74m-200h.png";
-const imgMenuIcon = "/external/frame101534-kup9.svg";
-const imgDepositIcon = "/external/frame111535-a3bh.svg";
-const imgTradeIcon = "/external/frame121536-klyr.svg";
+// Image assets
 const imgSearch = "/external/search1526-kx1o.svg";
-const imgSpotAudusdLogoDeff1 = "/svg/ellipse54526-u4gp-200h.png";
 const imgMarketIcon = "/external/dashboardicon1125-mcf2.svg";
 const imgLayer1 = "/external/frame121563-1ama.svg";
 const imgHistoryIcon = "/external/frame121569-nf45.svg";
@@ -31,21 +25,21 @@ const MarketPage = ({ onNavigateToHistory, onNavigateToPositions, onNavigateToCh
   const marketData = [
     {
       symbol: 'AUDUSD',
-      logo: imgSpotAudusdLogoDeff1,
+      logo: '/svg/ellipse54526-u4gp-200h.png',
       price: '0.65419',
       change: '+15.06%',
       changeColor: '#1bb507'
     },
     {
       symbol: 'ASELSAN',
-      logo: imgAselsIs1D4485091,
+      logo: '/svg/ellipse54527-a74m-200h.png',
       price: '0.65419',
       change: '-15.06%',
       changeColor: '#e14145'
     },
     {
       symbol: 'GARAN',
-      logo: imgGaranIs3226785E1,
+      logo: '/svg/ellipse54526-u4gp-200h.png',
       price: 'Market Closed',
       change: '',
       changeColor: '#1d6ce9'

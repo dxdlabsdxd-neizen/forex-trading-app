@@ -1,0 +1,547 @@
+/* Withdrawal Page Container */
+.withdrawal-page-container {
+  background-color: white;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Inter', 'Public Sans', sans-serif;
+}
+
+/* Header Background - Exact same as Market Page */
+.withdrawal-header-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 282px;
+  background-color: #1d6ce9;
+  border-radius: 0 0 12px 12px;
+}
+
+.withdrawal-header-shadow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0px 4px 36.1px 9px rgba(0, 0, 0, 0.25);
+}
+
+/* Main Content */
+.withdrawal-main-content {
+  position: absolute;
+  top: 32px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1;
+  padding-bottom: 87px;
+  overflow-y: auto;
+  height: calc(100vh - 119px);
+}
+
+/* Equity Section - Exact same as Market Page */
+.withdrawal-equity-section {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 10px;
+  height: 94px;
+  justify-content: center;
+}
+
+.withdrawal-equity-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #c8c6c6;
+  text-align: center;
+  line-height: normal;
+}
+
+.withdrawal-equity-value {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  color: white;
+  text-align: center;
+  line-height: normal;
+}
+
+/* Main Menu Buttons - Exact same as Market Page */
+.withdrawal-menu-buttons {
+  background-color: #103d83;
+  border-radius: 24px;
+  padding: 24px;
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.withdrawal-menu-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 52px;
+  cursor: pointer;
+}
+
+.withdrawal-menu-icon-box {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 12px;
+  gap: 10px;
+}
+
+.withdrawal-menu-icon-box svg {
+  width: 24px;
+  height: 24px;
+}
+
+.withdrawal-menu-text {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+  text-transform: capitalize;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* Tab Section - Mobile Only - Exact same as History Page */
+.mobile-withdrawal-tab-section {
+  background-color: #dde9fc;
+  border-radius: 12px;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.mobile-withdrawal-tab {
+  flex: 1;
+  height: 53px;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.mobile-withdrawal-tab.active {
+  background-color: #1d6ce9;
+  color: white;
+}
+
+.mobile-withdrawal-tab:not(.active) {
+  background-color: white;
+  color: #1e1e1e;
+}
+
+/* Withdrawal Content Wrapper */
+.withdrawal-content-wrapper {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Withdrawal Box */
+.withdrawal-box {
+  background-color: rgba(221, 233, 252, 1);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Info Header Section */
+.withdrawal-info-header {
+  margin-bottom: 20px;
+}
+
+.withdrawal-info-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e1e1e;
+  margin: 0 0 8px 0;
+  font-family: Arial, sans-serif;
+}
+
+.withdrawal-info-subtitle {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Form Section */
+.withdrawal-form-section {
+  margin-bottom: 20px;
+}
+
+.withdrawal-form-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 8px;
+  font-family: Arial, sans-serif;
+}
+
+.withdrawal-input-group {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.withdrawal-input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: #E3E3E3;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  border-radius: 4px;
+}
+
+.withdrawal-input-unit {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #666;
+  font-family: Arial, sans-serif;
+}
+
+.withdrawal-min-amount-text {
+  font-size: 10px;
+  color: #999;
+  margin-top: 4px;
+  font-family: Arial, sans-serif;
+}
+
+/* Quick Selection */
+.withdrawal-quick-selection {
+  margin-bottom: 20px;
+}
+
+.withdrawal-quick-selection-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 12px;
+  font-family: Arial, sans-serif;
+}
+
+.withdrawal-selection-buttons {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.withdrawal-selection-btn {
+  background-color: #f0f0f0;
+  color: #555;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: Arial, sans-serif;
+}
+
+.withdrawal-selection-btn.active {
+  background-color: #1D6CE9;
+  color: #fff;
+}
+
+/* Summary Section */
+.withdrawal-summary-section {
+  background-color: #E3E3E3;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.withdrawal-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.withdrawal-summary-label {
+  font-size: 12px;
+  color: #666;
+  font-family: Arial, sans-serif;
+}
+
+.withdrawal-summary-value {
+  font-size: 12px;
+  color: #333;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+.withdrawal-summary-row.withdrawal-total {
+  border-top: 1px dashed #ccc;
+  padding-top: 12px;
+  margin-top: 8px;
+}
+
+.withdrawal-total-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #1D6CE9;
+  font-family: Arial, sans-serif;
+}
+
+.withdrawal-total-value {
+  font-size: 14px;
+  font-weight: bold;
+  color: #1D6CE9;
+  font-family: Arial, sans-serif;
+}
+
+/* Withdrawal Button */
+.withdrawal-button,
+.withdrawal-approve-button {
+  width: 100%;
+  background-color: #1D6CE9;
+  color: #fff;
+  border: none;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: Arial, sans-serif;
+  text-transform: none;
+}
+
+.withdrawal-button:hover,
+.withdrawal-approve-button:hover {
+  background-color: #1557b0;
+}
+
+/* Form Sub Section */
+.withdrawal-form-sub-section {
+  margin-bottom: 20px;
+}
+
+/* Info Container for Page 2 */
+.withdrawal-info-container {
+  width: 100%;
+}
+
+/* Info Box - Light Blue Container */
+.withdrawal-info-box {
+  background-color: #E8F1FC;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+/* Info Box Header with Back Button */
+.withdrawal-info-box-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.withdrawal-back-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.withdrawal-info-box-title-section {
+  flex: 1;
+}
+
+.withdrawal-info-box-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e1e1e;
+  margin: 0 0 4px 0;
+  font-family: Arial, sans-serif;
+}
+
+.withdrawal-info-box-subtitle {
+  font-size: 11px;
+  color: #666;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.4;
+}
+
+.withdrawal-form-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 16px;
+}
+
+.withdrawal-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Important Notes Section */
+.withdrawal-important-notes {
+  background-color: #FFF9E6;
+  border-left: 3px solid #FFD700;
+  padding: 12px 14px;
+  border-radius: 4px;
+}
+
+.withdrawal-notes-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+}
+
+.withdrawal-notes-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #D4A017;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.withdrawal-notes-toggle-arrow {
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.withdrawal-notes-toggle-arrow.expanded {
+  transform: rotate(180deg);
+}
+
+.withdrawal-notes-list {
+  margin: 10px 0 0 0;
+  padding-left: 18px;
+  font-size: 11px;
+  color: #666;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.withdrawal-notes-list li {
+  margin-bottom: 4px;
+}
+
+.withdrawal-notes-list li:last-child {
+  margin-bottom: 0;
+}
+
+.withdrawal-sub-input-group {
+  margin-bottom: 15px;
+}
+
+.withdrawal-sub-input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: #E3E3E3;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  border-radius: 4px;
+}
+
+/* Select Group */
+.withdrawal-select-group {
+  position: relative;
+}
+
+.withdrawal-select-content {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background-color: #E3E3E3;
+  border-radius: 4px;
+  cursor: pointer;
+  gap: 8px;
+}
+
+.withdrawal-crypto-icon,
+.withdrawal-network-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.withdrawal-network-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid #bbb;
+}
+
+.withdrawal-select-text {
+  flex: 1;
+  font-size: 14px;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+.withdrawal-dropdown-icon {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* Scrollbar Styling */
+.withdrawal-main-content::-webkit-scrollbar,
+.withdrawal-content-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.withdrawal-main-content::-webkit-scrollbar-track,
+.withdrawal-content-wrapper::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.withdrawal-main-content::-webkit-scrollbar-thumb,
+.withdrawal-content-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.withdrawal-main-content::-webkit-scrollbar-thumb:hover,
+.withdrawal-content-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
