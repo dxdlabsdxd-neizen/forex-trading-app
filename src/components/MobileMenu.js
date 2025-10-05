@@ -109,7 +109,7 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
           onNavigateToChart={() => handleNavClick('Chart')}
           onNavigateToMenu={() => setCurrentModal(null)}
           onNavigateToDeposit={() => setCurrentModal('Deposit')}
-          onNavigateToTrade={() => console.log('Trade clicked')}
+          onNavigateToTrade={() => onNavigate('Trade')}
         />
       case 'History':
         return <HistoryPage onClose={handleCloseModal} onNavigateToPosition={() => handleNavClick('Positions')} />
@@ -168,7 +168,7 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
           onClose={handleCloseModal}
           onNavigateToMenu={() => setCurrentModal(null)}
           onNavigateToDeposit={() => setCurrentModal('Deposit')}
-          onNavigateToTrade={() => console.log('Trade clicked')}
+          onNavigateToTrade={() => onNavigate('Trade')}
           onNavigateToMarket={() => handleNavClick('Market')}
           onNavigateToChart={() => handleNavClick('Chart')}
           onNavigateToPositions={() => handleNavClick('Positions')}
@@ -179,7 +179,7 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
           onClose={handleCloseModal}
           onNavigateToMenu={() => setCurrentModal(null)}
           onNavigateToWithdrawal={() => setCurrentModal('Withdrawal')}
-          onNavigateToTrade={() => console.log('Trade clicked')}
+          onNavigateToTrade={() => onNavigate('Trade')}
           onNavigateToMarket={() => handleNavClick('Market')}
           onNavigateToChart={() => handleNavClick('Chart')}
           onNavigateToPositions={() => handleNavClick('Positions')}

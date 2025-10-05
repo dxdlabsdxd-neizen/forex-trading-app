@@ -6,6 +6,7 @@ import './home.css'
 import AccountStatistics from '../components/AccountStatistics'
 import SetAlert from '../components/SetAlert'
 import MobileMenu from '../components/MobileMenu'
+import TradePage from '../components/TradePage'
 
 const Home = (props) => {
   const [showDropdown, setShowDropdown] = useState(false)
@@ -52,7 +53,7 @@ const Home = (props) => {
   const [withdrawalMethod, setWithdrawalMethod] = useState('bank')
   const [withdrawalPage, setWithdrawalPage] = useState(1)
   const [showSearchModal, setShowSearchModal] = useState(false)
-  const [searchActiveTab, setSearchActiveTab] = useState('POSITIONS')
+  const [searchActiveTab, setSearchActiveTab] = useState('MARKET')
   const [showHelpDeskModal, setShowHelpDeskModal] = useState(false)
   const [helpDeskForm, setHelpDeskForm] = useState({
     fullName: 'Emma',
@@ -2331,6 +2332,13 @@ const Home = (props) => {
             {/* Tabs */}
             <div className="order-panel-tabs">
               <button 
+                className={`order-tab ${activeTab === 'MARKET' ? 'active' : ''}`}
+                onClick={() => setActiveTab('MARKET')}
+              >
+                MARKET
+              </button>
+              <div className="order-tab-separator"></div>
+              <button 
                 className={`order-tab ${activeTab === 'ORDER' ? 'active' : ''}`}
                 onClick={() => setActiveTab('ORDER')}
               >
@@ -2900,6 +2908,12 @@ const Home = (props) => {
             
             <div className="search-tabs">
               <div 
+                className={`search-tab ${searchActiveTab === 'MARKET' ? 'active' : ''}`}
+                onClick={() => handleSearchTabClick('MARKET')}
+              >
+                MARKET
+              </div>
+              <div 
                 className={`search-tab ${searchActiveTab === 'POSITIONS' ? 'active' : ''}`}
                 onClick={() => handleSearchTabClick('POSITIONS')}
               >
@@ -2913,12 +2927,11 @@ const Home = (props) => {
               </div>
             </div>
             
-            {/* Market table */}
-            <table className="search-table">
+            <table className="search-market-table">
               <thead>
                 <tr>
-                  <th>Symbol</th>
-                  <th>Type</th>
+                  <th>Instrument</th>
+                  <th>Forex</th>
                   <th>Change</th>
                   <th>Bid</th>
                   <th>Spread</th>
@@ -2926,6 +2939,54 @@ const Home = (props) => {
                 </tr>
               </thead>
               <tbody>
+                <tr>
+                  <td>CADCHF</td>
+                  <td>Major</td>
+                  <td className="search-change positive">+0.02%</td>
+                  <td className="search-bid">0.58258</td>
+                  <td>0</td>
+                  <td className="search-ask">0.58258</td>
+                </tr>
+                <tr>
+                  <td>CADJPY</td>
+                  <td>Major</td>
+                  <td className="search-change positive">+0.02%</td>
+                  <td className="search-bid">0.58258</td>
+                  <td>12.00</td>
+                  <td className="search-ask">0.58258</td>
+                </tr>
+                <tr>
+                  <td>CHFJPY</td>
+                  <td>Major</td>
+                  <td className="search-change positive">+0.02%</td>
+                  <td className="search-bid">0.58258</td>
+                  <td>0</td>
+                  <td className="search-ask">0.58258</td>
+                </tr>
+                <tr>
+                  <td>EURCAD</td>
+                  <td>Major</td>
+                  <td className="search-change positive">+0.02%</td>
+                  <td className="search-bid">0.58258</td>
+                  <td>0</td>
+                  <td className="search-ask">0.58258</td>
+                </tr>
+                <tr>
+                  <td>EURCHF</td>
+                  <td>Major</td>
+                  <td className="search-change positive">+0.02%</td>
+                  <td className="search-bid">1.05159</td>
+                  <td>21</td>
+                  <td className="search-ask">1.05159</td>
+                </tr>
+                <tr>
+                  <td>EURGBP</td>
+                  <td>Minor</td>
+                  <td className="search-change positive">+0.02%</td>
+                  <td className="search-bid">0.58258</td>
+                  <td>12.00</td>
+                  <td className="search-ask">0.58258</td>
+                </tr>
                 <tr>
                   <td>EURJPY</td>
                   <td>Minor</td>
@@ -3133,6 +3194,19 @@ const Home = (props) => {
             <p>Market data will be displayed here</p>
           </div>
         </div>
+      )}
+
+      {/* Trade Page - Show when currentMobilePage is 'Trade' */}
+      {currentMobilePage === 'Trade' && (
+        <TradePage 
+          onNavigateToMenu={() => setCurrentMobilePage('Menu')}
+          onNavigateToDeposit={() => setShowDepositModal(true)}
+          onNavigateToWithdrawal={() => setShowWithdrawalModal(true)}
+          onNavigateToMarket={() => setCurrentMobilePage('Market')}
+          onNavigateToChart={() => console.log('Navigate to Chart')}
+          onNavigateToPositions={() => console.log('Navigate to Positions')}
+          onNavigateToHistory={() => console.log('Navigate to History')}
+        />
       )}
       
     </div>

@@ -245,8 +245,8 @@
 }
 
 .chart-filter-btn.active {
-  background: #1d6ce9;
-  color: white;
+  background: #1d6ce9 !important;
+  color: white !important;
   font-weight: 300;
   font-family: 'Inter', sans-serif;
 }
@@ -961,6 +961,14 @@
 }
 
 
+/* Ensure background color on web/desktop */
+@media (min-width: 769px) {
+  .chart-filter-btn.active {
+    background: #1d6ce9 !important;
+    color: white !important;
+  }
+}
+
 /* Chart Filter Categories Responsive */
 @media (max-width: 320px) {
   .chart-filter-categories {
@@ -1508,7 +1516,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
   font-size: 11px;
   font-weight: 600;
   color: #666;
@@ -1527,8 +1534,8 @@
   content: '';
   position: absolute;
   bottom: 0;
-  left: 20%;
-  width: 62%;
+  left: 40%;
+  width: 20%;
   right: 0;
   height: 2px;
   background-color: #1d6ce9;
@@ -1641,19 +1648,23 @@
   flex-direction: column;
   gap: 12px;
   margin-bottom: 16px;
-  padding: 12px 0;
+  padding: 12px 16px;
 }
  
 .options-row {
   display: flex;
-  gap: 60px;
+  gap: 40px;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .option-group {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  flex: 0 0 auto;
+  min-width: 115px;
+  max-width: 115px;
 }
  
 .checkbox-container {
@@ -3685,11 +3696,21 @@
 .withdrawal-modal {
   background-color: #fff;
   box-shadow: none;
-  max-width: 320px;
-  width: 80%;
+  max-width: 380px;
+  width: 90%;
   padding: 0;
   box-sizing: border-box;
   border-radius: 0;
+}
+
+/* Force no border-radius on all withdrawal modal buttons */
+.withdrawal-modal button,
+.withdrawal-modal .withdrawal-selection-btn,
+.withdrawal-modal .withdrawal-button,
+.withdrawal-modal .withdrawal-approve-button,
+.withdrawal-modal .withdrawal-tab,
+.withdrawal-modal .withdrawal-close {
+  border-radius: 0 !important;
 }
 
 .withdrawal-page {
@@ -3851,19 +3872,42 @@
   display: flex;
   justify-content: flex-start;
   flex-wrap: nowrap;
-  gap: 4px;
+  gap: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.withdrawal-selection-buttons::-webkit-scrollbar {
+  height: 4px;
+}
+
+.withdrawal-selection-buttons::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.withdrawal-selection-buttons::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 0;
+}
+
+.withdrawal-selection-buttons::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .withdrawal-selection-btn {
   background-color: #f0f0f0;
   color: #555;
   border: none;
-  padding: 6px 13px;
+  padding: 6px 10px;
   font-size: 11px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   border-radius: 0;
   font-family: Arial, sans-serif;
+  flex-shrink: 0;
+  white-space: nowrap;
+  min-width: fit-content;
 }
 
 .withdrawal-selection-btn.active {
@@ -4072,6 +4116,8 @@
   border: none;
   border-radius: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 600px;
   max-height: 90vh;
@@ -4087,6 +4133,7 @@
   padding: 0.75rem 1rem;
   font-size: 0.75rem;
   border: none;
+  flex-shrink: 0;
 }
 
 .search-header-left {
@@ -4116,6 +4163,7 @@
   display: flex;
   border-bottom: none;
   background-color: #fff;
+  flex-shrink: 0;
 }
 
 .search-tab {
@@ -4125,9 +4173,9 @@
   cursor: pointer;
   color: #666;
   font-size: 0.75rem;
-  border-bottom: 2px solid transparent;
   transition: all 0.3s ease;
   font-family: Arial, sans-serif;
+  position: relative;
 }
 
 .search-tab:hover {
@@ -4137,9 +4185,59 @@
 .search-tab.active {
   color: #000;
   font-weight: bold;
-  border-bottom-color: #007bff;
 }
 
+.search-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 30%;
+  width: 40%;
+  height: 2px;
+  background-color: #007bff;
+}
+
+.search-market-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  display: block;
+  overflow-y: auto;
+  max-height: calc(90vh - 150px);
+}
+
+.search-market-table thead,
+.search-market-table tbody {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.search-market-table th {
+  background-color: #f8f9fa;
+  color: #333;
+  font-weight: 600;
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 11px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.search-market-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+  font-size: 11px;
+}
+
+.search-market-table tr:hover {
+  background-color: #f8f9fa;
+  cursor: pointer;
+}
 
 .search-change.positive {
   color: green;
@@ -5095,6 +5193,13 @@
   width: 15px;
   height: 15px;
   margin-right: 8px;
+}
+
+/* Withdrawal Modal Responsive Adjustments for Web */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .withdrawal-modal {
+    max-width: 360px;
+  }
 }
 
 /* Mobile Menu Integration - Hide desktop version on mobile */
