@@ -33,6 +33,9 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
       setCurrentModal('Deposit')
     } else if (navItem === 'Help Desk') {
       setCurrentModal('HelpDesk')
+    } else if (navItem === 'Chart') {
+      // For Chart navigation, we can add a placeholder or navigate to a chart page
+      console.log('Navigate to Chart')
     } else {
       setCurrentModal(null)
     }
@@ -69,7 +72,7 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
     } else if (item === 'Deposit') {
       setCurrentModal('Deposit')
     } else if (item === 'Trade & Transaction') {
-      setCurrentModal('TradeTransaction')
+      onNavigate('Trade')
     } else if (item === 'Help Desk') {
       setCurrentModal('HelpDesk')
     }
@@ -82,7 +85,7 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
 
   const handleTradeClick = () => {
     setActiveTopNavItem('Trade')
-    // Add trade functionality here if needed
+    onNavigate('Trade')
     console.log('Trade button clicked')
   }
 
@@ -185,8 +188,6 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
           onNavigateToPositions={() => handleNavClick('Positions')}
           onNavigateToHistory={() => handleNavClick('History')}
         />
-      case 'TradeTransaction':
-        return <div className="mobile-modal-content">Trade & Transaction Modal - Coming Soon</div>
       case 'HelpDesk':
         return (
           <div className="mobile-modal-content">
@@ -400,8 +401,8 @@ const MobileMenu = ({ onNavigate, currentPage, onOpenDepositModal }) => {
         ) : null}
       </div>
 
-      {/* Fixed Bottom Navigation - Hide for Market, Withdrawal and Deposit pages */}
-      {currentModal !== 'Market' && currentModal !== 'Withdrawal' && currentModal !== 'Deposit' && (
+      {/* Fixed Bottom Navigation - Hide for Withdrawal and Deposit pages */}
+      {currentModal !== 'Withdrawal' && currentModal !== 'Deposit' && (
       <div className="figma-bottom-nav">
         <div className={`figma-nav-item ${activeNavItem === 'Market' ? 'active' : ''}`} onClick={() => handleNavClick('Market')}>
           <div className="figma-nav-icon-container">

@@ -3196,6 +3196,36 @@ const Home = (props) => {
         </div>
       )}
 
+      {/* Positions Page - Show when currentMobilePage is 'Positions' */}
+      {currentMobilePage === 'Positions' && (
+        <div className="mobile-positions-page">
+          <div className="mobile-positions-header">
+            <h2>Positions</h2>
+            <button onClick={() => setCurrentMobilePage('Menu')} className="back-button">
+              ← Back
+            </button>
+          </div>
+          <div className="mobile-positions-content">
+            <p>Positions data will be displayed here</p>
+          </div>
+        </div>
+      )}
+
+      {/* History Page - Show when currentMobilePage is 'History' */}
+      {currentMobilePage === 'History' && (
+        <div className="mobile-history-page">
+          <div className="mobile-history-header">
+            <h2>History</h2>
+            <button onClick={() => setCurrentMobilePage('Menu')} className="back-button">
+              ← Back
+            </button>
+          </div>
+          <div className="mobile-history-content">
+            <p>History data will be displayed here</p>
+          </div>
+        </div>
+      )}
+
       {/* Trade Page - Show when currentMobilePage is 'Trade' */}
       {currentMobilePage === 'Trade' && (
         <TradePage 
@@ -3204,8 +3234,8 @@ const Home = (props) => {
           onNavigateToWithdrawal={() => setShowWithdrawalModal(true)}
           onNavigateToMarket={() => setCurrentMobilePage('Market')}
           onNavigateToChart={() => console.log('Navigate to Chart')}
-          onNavigateToPositions={() => console.log('Navigate to Positions')}
-          onNavigateToHistory={() => console.log('Navigate to History')}
+          onNavigateToPositions={() => setCurrentMobilePage('Positions')}
+          onNavigateToHistory={() => setCurrentMobilePage('History')}
         />
       )}
       
